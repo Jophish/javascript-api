@@ -1,0 +1,19 @@
+{
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "**/__tests__/*.ts",
+    "**/__mocks__/*.ts",    
+    // "**/*.spec.ts",
+    "node_modules"
+  ],
+  "compilerOptions": {            
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./lib",
+    "baseUrl": "./src",
+    "moduleResolution": "node"
+  }
+}

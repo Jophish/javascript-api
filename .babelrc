@@ -1,0 +1,13 @@
+{
+  "ignore": [
+    "**/*.map.js"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": 4
+      }
+    }]
+  ],
+  "plugins": ["transform-runtime"]
+}

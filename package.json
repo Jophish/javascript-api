@@ -1,0 +1,63 @@
+{
+  "name": "javascript-api",
+  "version": "1.0.0",
+  "description": "SDK designed to work with Split (https://www.split.io), the platform for controlled rollouts. The SDK interacts with Split API for identifying traffic.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf ./lib && npm run build-ts && npm run babel",
+    "test": "jest",
+    "test:w": "jest --watch",
+    "babel": "babel ./lib --out-dir ./lib",
+    "build-ts": "tsc",
+    "start": "node ./lib/index.js",
+    "debug": "node --debug-brk ./lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/splitio/javascript-api.git"
+  },
+  "keywords": [
+    "Split",
+    "SDK",
+    "Identify",
+    "Traffic",
+    "Rollout"
+  ],
+  "author": "Nico Zelaya (nicolas.zelaya@split.io)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/splitio/javascript-api/issues"
+  },
+  "homepage": "https://github.com/splitio/javascript-api#readme",
+  "dependencies": {
+    "superagent": "^3.5.2",
+    "superagent-cache": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.41",
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.18",
+    "@types/superagent": "^2.0.36",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-runtime": "^6.23.0",
+    "jest": "^20.0.3",
+    "rimraf": "^2.6.1",
+    "ts-jest": "^20.0.4",
+    "typescript": "^2.3.3"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*)\\.(ts)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ]
+  }
+}
