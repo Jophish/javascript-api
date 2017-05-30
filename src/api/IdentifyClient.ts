@@ -1,9 +1,11 @@
 import IdentifyConfig, { IIdentifyConfig } from './config/IdentifyConfig';
+import gateway from './http/gateway';
+
 import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient } from './clients';
 
 export default class IdentifyClient {
-  // Received
-  readonly apiKey: string;  
+  // params
+  readonly apiKey: string;
   readonly config: IIdentifyConfig;
   // Client instances
   readonly TrafficType: TrafficTypeClient;
@@ -13,11 +15,14 @@ export default class IdentifyClient {
 
   constructor(apiKey: string, config?: IIdentifyConfig) {
     this.apiKey = apiKey;
+
     this.config = new IdentifyConfig(config);
+    gateway.adminKey = apiKey;
+    gateway.settings = this.config;
 
     this.TrafficType = new TrafficTypeClient();
+    this.Attribute = new AttributeClient();    
     this.Environment = new EnvironmentClient();
-    this.Attribute = new AttributeClient();
     this.Identity = new IdentityClient();
   }
 
