@@ -5,7 +5,6 @@ import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient }
 
 export default class IdentifyClient {
   // params
-  readonly apiKey: string;
   readonly config: IIdentifyConfig;
   // Client instances
   readonly TrafficType: TrafficTypeClient;
@@ -13,10 +12,9 @@ export default class IdentifyClient {
   readonly Attribute: AttributeClient;
   readonly Identity: IdentityClient;
 
-  constructor(apiKey: string, config?: IIdentifyConfig) {
-    this.apiKey = apiKey;
-
+  constructor(private apiKey: string, config?: IIdentifyConfig) {
     this.config = new IdentifyConfig(config);
+
     gateway.adminKey = apiKey;
     gateway.settings = this.config;
 
@@ -25,5 +23,6 @@ export default class IdentifyClient {
     this.Environment = new EnvironmentClient();
     this.Identity = new IdentityClient();
   }
-
 }
+
+export interface IIdentifyConfig extends IIdentifyConfig {}

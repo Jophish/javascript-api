@@ -1,3 +1,16 @@
-import IdentifyClient from './api/IdentifyClient';
+import IdentifyClient, { IIdentifyConfig } from './api/IdentifyClient';
 
-const client = new IdentifyClient('api-key');
+let clientsCache = {};
+
+export function getClient (adminKey: string, config?: IIdentifyConfig) {
+  let identifyClient = clientsCache[adminKey];
+
+  if (!identifyClient) {
+    clientsCache[adminKey] = new IdentifyClient(adminKey, config);
+    identifyClient = clientsCache[adminKey];
+  }
+
+  return {
+    identifyClient
+  };
+}
