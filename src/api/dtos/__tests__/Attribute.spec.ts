@@ -5,18 +5,11 @@ test('should be a class (function)', () => {
 });
 
 test('instances should parse and expose properties received on creation', () => {
-  const attrData = {
-    id: 'id',
-    trafficTypeId: 'ttId',
-    name: 'name',
-    dataType: 'dt',
-    description: 'desc'
-  };
-  const attribute = new Attribute(attrData);
+  const attribute = new Attribute('id', 'ttId', 'name', 'dt', 'desc');
 
-  expect(attribute.id).toBe(attrData.id);
-  expect(attribute.trafficTypeId).toBe(attrData.trafficTypeId);
-  expect(attribute.name).toBe(attrData.name);
-  expect(attribute.dataType).toBe(attrData.dataType);
-  expect(attribute.description).toBe(attrData.description);
+  expect(attribute.id).toBe('id');
+  expect(attribute.trafficTypeId).toBe('ttId');
+  expect(attribute.displayName).toBe('name');
+  expect(attribute.dataType).toBe('dt');
+  expect(attribute.description).toBe('desc');
 });
