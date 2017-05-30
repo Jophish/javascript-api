@@ -1,14 +1,16 @@
 {
-  "name": "javascript-api",
+  "name": "@splitsoftware/splitioapi",
   "version": "1.0.0",
   "specVersion": "1.0",
   "description": "SDK designed to work with Split (https://www.split.io), the platform for controlled rollouts. The SDK interacts with Split API for identifying traffic.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "types",
   "scripts": {
     "build": "rimraf ./lib && npm run build-ts && npm run babel",
     "test": "jest",
     "test:w": "jest --watch",
-    "babel": "babel ./lib --out-dir ./lib",
+    "babel": "babel ./es --out-dir ./lib --source-maps",
     "build-ts": "tsc",
     "start": "node ./lib/index.js",
     "debug": "node --debug-brk ./lib/index.js"

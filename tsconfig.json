@@ -9,10 +9,10 @@
   ],
   "compilerOptions": {            
     "target": "es6",
-    "module": "commonjs",
+    "module": "es6",
     "sourceMap": false,
-    "outDir": "./lib",
     "baseUrl": "./src",
+    "outDir": "./es",    
     "moduleResolution": "node"
   }
 }
