@@ -4,8 +4,7 @@
   ],
   "exclude": [
     "**/__tests__/*.ts",
-    "**/__mocks__/*.ts",    
-    // "**/*.spec.ts",
+    "**/__mocks__/*.ts",
     "node_modules"
   ],
   "compilerOptions": {            
