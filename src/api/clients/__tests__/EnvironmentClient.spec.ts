@@ -1,5 +1,6 @@
+jest.mock('../../http/gateway');
+
 import EnvironmentClient from '../EnvironmentClient';
-import { Environment } from '../../dtos';
 
 test('should be a class (function)', () => {
   expect(typeof EnvironmentClient).toBe('function');
@@ -11,8 +12,14 @@ test('instances should expose an API', () => {
   expect(environment.list).toBeDefined();
 });
 
-test('it should be able to list the environments', async () => {
+test('it should be able return a promise resolving to list the environments', () => {
   const environment = new EnvironmentClient();
+  const listPromise = environment.list();
 
-  await expect(environment.list()).toBe('a');
+  expect(listPromise.then).toBeDefined();
+  expect(typeof listPromise.then).toBe('function');  
+
+  return listPromise.then((res) => {
+    expect(res).toMatchSnapshot();
+  });
 });
