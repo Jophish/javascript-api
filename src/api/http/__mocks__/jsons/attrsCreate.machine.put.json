@@ -1,0 +1,9 @@
+{
+  "description": "Name of the machine running the API",
+  "displayName": "Machine Name",
+  "trafficTypeId": "machineTT",
+  "id": "mname",
+  "organizationId": "SplitTesting",
+  "dataType": "STRING",
+  "isSearchable": false
+}

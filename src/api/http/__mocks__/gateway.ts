@@ -13,8 +13,8 @@ const MOCKS = {
     '/trafficTypes/machineTT/environments/STG/identities': require('./jsons/identitiesSave.machine.stg.post')     
   },
   PUT: {
-    '/trafficTypes/userTT/schema': 'Attribute for userTT created',       // Once the service works, copy the structure of the response in a JSON,
-    '/trafficTypes/machineTT/schema': 'Attribute for machineTT created', // Once the service works, copy the structure of the response in a JSON    
+    '/trafficTypes/userTT/schema': require('./jsons/attrsCreate.user.put'),
+    '/trafficTypes/machineTT/schema': require('./jsons/attrsCreate.machine.put'), 
     '/trafficTypes/userTT/environments/STG/identities/NicoZelaya': require('./jsons/identitySave.user.stg.nicozelaya.put')
   },
   PATCH: {},

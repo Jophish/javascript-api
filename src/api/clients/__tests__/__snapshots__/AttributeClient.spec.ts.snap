@@ -5,9 +5,18 @@ Object {
   "data": Object {
     "displayName": "Test 1",
     "id": "test1",
+    "organizationId": "SplitTesting",
     "trafficTypeId": "userTT",
   },
-  "response": "Attribute for userTT created",
+  "response": Object {
+    "dataType": "STRING",
+    "description": "",
+    "displayName": "French name",
+    "id": "frname",
+    "isSearchable": false,
+    "organizationId": "SplitTesting",
+    "trafficTypeId": "userTT",
+  },
 }
 `;
 
@@ -16,9 +25,18 @@ Object {
   "data": Object {
     "displayName": "Test 2",
     "id": "test2",
+    "organizationId": "SplitTesting",
     "trafficTypeId": "machineTT",
   },
-  "response": "Attribute for machineTT created",
+  "response": Object {
+    "dataType": "STRING",
+    "description": "Name of the machine running the API",
+    "displayName": "Machine Name",
+    "id": "mname",
+    "isSearchable": false,
+    "organizationId": "SplitTesting",
+    "trafficTypeId": "machineTT",
+  },
 }
 `;
 

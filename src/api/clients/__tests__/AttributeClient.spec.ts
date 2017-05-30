@@ -36,11 +36,13 @@ test('it should be able to create an attribute, returning a promise', () => {
   const attribute = new AttributeClient();
   const createPromise = attribute.create({
     id: 'test1',
+    organizationId: 'SplitTesting',
     trafficTypeId: 'userTT',
     displayName: 'Test 1'
   });
   const createPromise2 = attribute.create({
     id: 'test2',
+    organizationId: 'SplitTesting',
     trafficTypeId: 'machineTT',
     displayName: 'Test 2'
   });  
@@ -62,13 +64,18 @@ test('it should be able to delete an attribute, returning a promise', () => {
   const attribute = new AttributeClient();
   const deletePromise = attribute.delete({
     id: 'lname',
+    organizationId: 'SplitTesting',
     trafficTypeId: 'userTT',
-    displayName: 'Test 1'
+    displayName: 'Last name',
+    dataType: 'STRING'
   });
   const deletePromise2 = attribute.delete({
-    id: 'ip',
+    description: 'IP address of the machine running the API',
+    displayName: 'Machine IP',
     trafficTypeId: 'machineTT',
-    displayName: 'Test 2'
+    id: 'ip',
+    organizationId: 'SplitTesting',
+    dataType: 'STRING'
   }); 
 
   expect(deletePromise.then).toBeDefined();
