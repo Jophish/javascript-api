@@ -1,6 +1,10 @@
-import { get } from '../http/service';
+import gateway from '../http/gateway';
 
 export default class EnvironmentClient {
-  
-  list() {}
+  /**
+   * Lists all environments
+   */
+  list() {
+    return gateway.get('/environments');
+  };
 }

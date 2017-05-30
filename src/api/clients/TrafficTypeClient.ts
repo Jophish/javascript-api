@@ -1,4 +1,10 @@
+import gateway from '../http/gateway';
+
 export default class TrafficTypeClient {
-  
-  list() {};
+  /**
+   * Lists all traffic types
+   */
+  list() {
+    return gateway.get('/trafficTypes');
+  };
 }
