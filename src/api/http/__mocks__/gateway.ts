@@ -17,6 +17,7 @@ const MOCKS = {
     '/trafficTypes/machineTT/schema': 'Attribute for machineTT created', // Once the service works, copy the structure of the response in a JSON    
     '/trafficTypes/userTT/environments/STG/identities/NicoZelaya': require('./jsons/identitySave.user.stg.nicozelaya.put')
   },
+  PATCH: {},
   DELETE: { // Apparently the deletes return boolean values
     '/trafficTypes/userTT/schema/lname': true,
     '/trafficTypes/machineTT/schema/ip': true,
@@ -58,6 +59,17 @@ class MockGateway {
       process.nextTick(() => {
         res({
           response: MOCKS.PUT[path],
+          data
+        });
+      });
+    });
+  }
+
+  patch(data: Object, path: string) {
+    return new Promise((res, rej) => {
+      process.nextTick(() => {
+        res({
+          response: MOCKS.PATCH[path],
           data
         });
       });
