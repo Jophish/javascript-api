@@ -3,13 +3,12 @@ import { hostname as getMachineName } from 'os';
 
 import * as SA from 'superagent';
 import { address as getIpAddress } from 'ip';
-import debug = require('debug');
+import * as debug from 'debug';
 
 import { IIdentifyConfig } from '../config/IdentifyConfig';
 
 // Wrap SA with cache plugin
 require('superagent-cache')(SA);
-
 
 // request headers metadata
 const machineIp = getIpAddress();
@@ -21,7 +20,7 @@ const {
 
 // module variables
 const MAX_SOCKETS = 20;
-const log = debug('split-api:gateway');
+const log = debug.default('split-api:gateway');
 
 class Gateway {
   private _authToken: string;

@@ -1,4 +1,4 @@
-import debug = require('debug');
+import * as debug from 'debug';
 
 export interface IIdentifyConfig {
   endpoint?: string,
@@ -27,7 +27,7 @@ export default class IdentifyConfig implements IIdentifyConfig {
 
     if (this.debugEnabled) {
       debug.enable('split-api:*');
-    } else {
+    } else {      
       debug.disable();
     }
   }
