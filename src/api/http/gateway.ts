@@ -3,11 +3,14 @@ import { hostname as getMachineName } from 'os';
 
 import * as SA from 'superagent';
 import { address as getIpAddress } from 'ip';
+import debug = require('debug');
 
 import { IIdentifyConfig } from '../config/IdentifyConfig';
 
 // Wrap SA with cache plugin
 require('superagent-cache')(SA);
+
+
 // request headers metadata
 const machineIp = getIpAddress();
 const machineName = getMachineName();
@@ -16,6 +19,10 @@ const {
   specVersion
 } = require('../../../package.json');
 
+// module variables
+const MAX_SOCKETS = 20;
+const log = debug('split-api:gateway');
+
 class Gateway {
   private _authToken: string;
   private _settings: IIdentifyConfig = {};
@@ -23,7 +30,7 @@ class Gateway {
 
   constructor() {
     this._agent = new Agent({
-      maxSockets: 20
+      maxSockets: MAX_SOCKETS
     });
   };
 
@@ -77,9 +84,15 @@ class Gateway {
       .set('SplitSDKMachineName', machineName)
       .timeout(this._settings.connectionTimeout);
 
-    return req.catch((err) => {
-      throw new Error(err.response.error || err);
-    });
+    return req
+      .then((res) => {
+        log('Received json: ' + JSON.stringify(res.body));
+        return res;
+      })
+      .catch((err) => {
+        log(`Error Executing Request: method=${req.method} path=${req.url} status=${err.status}`);
+        throw new Error(err.response.error || err);
+      });
   }
 
   private resolveUrl(path: string): string {
