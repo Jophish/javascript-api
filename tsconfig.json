@@ -11,7 +11,7 @@
   "compilerOptions": {            
     "target": "es6",
     "module": "commonjs",
-    "sourceMap": true,
+    "sourceMap": false,
     "outDir": "./lib",
     "baseUrl": "./src",
     "moduleResolution": "node"
