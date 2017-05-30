@@ -1,0 +1,19 @@
+{
+  "objects": [
+    {
+      "id": "83094920-4491-11e7-84b7-126798e48ef6",
+      "name": "user",
+      "displayAttributeId": "name"
+    },
+    {
+      "id": "73d49980-4498-11e7-84b7-126798e48ef6",
+      "name": "machine",
+      "displayAttributeId": "name"
+    },
+    {
+      "id": "8ef11380-4491-11e7-84b7-126798e48ef6",
+      "name": "tt_1",
+      "displayAttributeId": "name"
+    }
+  ]
+}

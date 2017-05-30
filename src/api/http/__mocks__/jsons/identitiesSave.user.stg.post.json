@@ -1,0 +1,18 @@
+{
+  "objects": [
+    {
+      "values": {
+        "username": "NicoZelaya",
+        "email": "nico@split.io",
+        "dob": "02/08/1989"
+      },
+      "key": "NicoZelaya",
+      "environmentId": "STG",
+      "trafficTypeId": "userTT",
+      "organizationId": "SplitTesting",
+      "timestamp": 1496105118658
+    }
+  ],
+  "failed": [],
+  "metadata": {}
+}

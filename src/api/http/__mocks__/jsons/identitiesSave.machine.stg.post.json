@@ -1,0 +1,18 @@
+{
+  "objects": [
+    {
+      "values": {
+        "username": "Chocula666",
+        "email": "countchocula@vampires.ts",
+        "dob": "24/07/1710"
+      },
+      "key": "Chocula666",
+      "environmentId": "STG",
+      "trafficTypeId": "machineTT",
+      "organizationId": "SplitTesting",
+      "timestamp": 1496105118659
+    }
+  ],
+  "failed": [],
+  "metadata": {}
+}
