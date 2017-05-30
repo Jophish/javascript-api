@@ -6,7 +6,7 @@ export interface IIdentifyConfig {
 
 export default class IdentifyConfig implements IIdentifyConfig{
   private _defaults: IIdentifyConfig = {
-    endpoint: 'https://api.split.io',
+    endpoint: 'https://api.split.io/v1',
     connectionTimeout: 15000,
     debugEnabled: false
   };

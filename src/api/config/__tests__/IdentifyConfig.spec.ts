@@ -1,7 +1,7 @@
 import IdentifyConfig from '../IdentifyConfig';
 
 const defaultSettings = {
-  endpoint: 'https://api.split.io',
+  endpoint: 'https://api.split.io/v1',
   connectionTimeout: 15000,
   debugEnabled: false
 };
