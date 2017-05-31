@@ -8,17 +8,17 @@ test('should be a class (function)', () => {
 test('instances should expose an API', () => {
   const client = new ApiClient('apiKey');
 
-  expect(client.TrafficType).toBeDefined();
-  expect(client.Environment).toBeDefined();
-  expect(client.Attribute).toBeDefined();
-  expect(client.Identity).toBeDefined();
+  expect(client.trafficTypes).toBeDefined();
+  expect(client.environments).toBeDefined();
+  expect(client.attributes).toBeDefined();
+  expect(client.identities).toBeDefined();
 });
 
 test('API clients should be of the correct types', () => {
   const client = new ApiClient('apiKey');
 
-  expect(client.TrafficType).toBeInstanceOf(TrafficTypeClient);
-  expect(client.Environment).toBeInstanceOf(EnvironmentClient);
-  expect(client.Attribute).toBeInstanceOf(AttributeClient);
-  expect(client.Identity).toBeInstanceOf(IdentityClient);
+  expect(client.trafficTypes).toBeInstanceOf(TrafficTypeClient);
+  expect(client.environments).toBeInstanceOf(EnvironmentClient);
+  expect(client.attributes).toBeInstanceOf(AttributeClient);
+  expect(client.identities).toBeInstanceOf(IdentityClient);
 });
