@@ -37,10 +37,10 @@ declare namespace SplitAPI {
 
   class ApiClient {
     readonly config: ApiConfig
-    readonly TrafficType: TrafficTypeClient
-    readonly Attribute: AttributeClient
-    readonly Environment: EnvironmentClient
-    readonly Identity: IdentityClient
+    readonly trafficTypes: TrafficTypeClient
+    readonly attributes: AttributeClient
+    readonly environments: EnvironmentClient
+    readonly identities: IdentityClient
   }
 
   class TrafficTypeClient {
