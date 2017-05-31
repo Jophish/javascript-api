@@ -18,7 +18,7 @@ const {
 
 const TTClient: SplitAPI.TrafficTypeClient = apiClient.trafficTypes;
 const EnvClient: SplitAPI.EnvironmentClient = apiClient.environments;
-const AttrClient: SplitAPI.AttributeClient = apiClient.attributes;
+const AttrClient: SplitAPI.AttributeClient = apiClient.environments;
 const IdClient: SplitAPI.IdentityClient = apiClient.identities;
 
 const myAttr: SplitAPI.IAttribute = new entities.Attribute('id');
