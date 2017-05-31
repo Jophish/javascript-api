@@ -7,15 +7,13 @@ import * as debug from 'debug';
 
 import { IApiConfig } from '../config/ApiConfig';
 // Remove once superagent types at DefinitelyTyped get updated
-declare namespace request {
-  interface SuperAgentRequest extends Request {
-    agent(agent: Agent): this;
-    agent(): this;
+interface SuperAgentRequest extends Request, SA.SuperAgentRequest {
+  agent(agent: Agent): this;
+  agent(): this;
 
-    method: string;
-    url: string;
-    cookies: string;
-  }
+  method: string;
+  url: string;
+  cookies: string;
 }
 
 // Wrap SA with cache plugin
@@ -55,37 +53,37 @@ class Gateway {
   get(path: string): Promise<SA.Response> {
     const req = SA.get(this.resolveUrl(path));
 
-    return this.executeRequest(req);
+    return this.executeRequest(<SuperAgentRequest>req);
   }
 
   del(path: string): Promise<SA.Response> {
     const req = SA.delete(this.resolveUrl(path));
 
-    return this.executeRequest(req);
+    return this.executeRequest(<SuperAgentRequest>req);
   }
 
   post(data: Object, path: string): Promise<SA.Response> {
     const req = SA.post(this.resolveUrl(path))
       .send(data);
 
-    return this.executeRequest(req);
+    return this.executeRequest(<SuperAgentRequest>req);
   }
 
   put(data: Object, path: string): Promise<SA.Response> {
     const req = SA.put(this.resolveUrl(path))
       .send(data);
 
-    return this.executeRequest(req);
+    return this.executeRequest(<SuperAgentRequest>req);
   }
 
   patch(data: Object, path: string): Promise<SA.Response> {
     const req = SA.patch(this.resolveUrl(path))
       .send(data);
 
-    return this.executeRequest(req);
+    return this.executeRequest(<SuperAgentRequest>req);
   }
 
-  private executeRequest(req: SA.SuperAgentRequest): Promise<SA.Response> {
+  private executeRequest(req: SuperAgentRequest): Promise<SA.Response> {
     req.agent(this._agent)
       .set('Authorization', this._authToken)
       .set('SplitSDKVersion', apiVersion)
