@@ -1,2 +1,2 @@
 # javascript-api
-Split public API for javascript
+Split public API for javascript - V1
