@@ -1,4 +1,8 @@
 import * as debug from 'debug';
+const {
+  version: apiVersion,
+  specVersion
+} = require('../../../package.json');
 
 export interface IIdentifyConfig {
   endpoint?: string,
@@ -15,6 +19,8 @@ export default class IdentifyConfig implements IIdentifyConfig {
   readonly endpoint: string;
   readonly connectionTimeout: number;
   readonly debugEnabled: boolean;
+  readonly apiVersion: string = apiVersion;
+  readonly apiSpecVersion: string = specVersion;
 
   constructor(config: IIdentifyConfig = {}) {
     const {

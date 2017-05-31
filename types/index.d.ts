@@ -27,7 +27,8 @@ declare namespace SplitAPI {
     readonly endpoint: string;
     readonly connectionTimeout: number;
     readonly debugEnabled: boolean;
-    constructor(config?: IIdentifyConfig);
+    readonly apiVersion: string;
+    readonly apiSpecVersion: string;
   }
 
   class IdentifyClient {
