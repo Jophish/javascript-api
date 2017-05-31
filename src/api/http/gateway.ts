@@ -74,7 +74,7 @@ class Gateway {
     return this.executeRequest(req);
   }
 
-  private executeRequest(req: SA.Request): Promise<SA.Response> {
+  private executeRequest(req: SA.SuperAgentRequest): Promise<SA.Response> {
     req.agent(this._agent)
       .set('Authorization', this._authToken)
       .set('SplitSDKVersion', apiVersion)
