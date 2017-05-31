@@ -51,8 +51,11 @@ test('it should be able to create an identity, returning a promise', () => {
 
 test('it should be able to save a collection of identities, returning a promise', () => {
   const identity = new IdentityClient();
+  const choculaUser = Object.assign({}, choculaIdent, {
+    trafficTypeId: 'userTT'
+  });
   const createBulkPromise = identity.saveBulk([
-    NicoZelayaIdent, choculaIdent
+    NicoZelayaIdent, choculaIdent, choculaUser
   ]);
 
   expect(createBulkPromise.then).toBeDefined();
@@ -65,7 +68,7 @@ test('it should be able to save a collection of identities, returning a promise'
     const chocula = res[1];
 
     // It should sent the data of the received identities
-    expect(nico.data).toMatchObject([NicoZelayaIdent]);
+    expect(nico.data).toMatchObject([NicoZelayaIdent, choculaUser]);
     expect(chocula.data).toMatchObject([choculaIdent]);
 
     // And receive a response

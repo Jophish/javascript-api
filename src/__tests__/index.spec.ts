@@ -27,13 +27,22 @@ test('entities should expose the DTO constructors', () => {
 });
 
 test('client function should receive either a key or a key and an object with configurations and return an api client', () => {
-  const apiClient = client('admin-key');
-  const apiClientWSettings = client('admin-key', {
+  const apiConfig = {
     endpoint: 'end',
     debugEnabled: true,
     connectionTimeout: 2000
-  });  
+  }
+  const apiClient = client('admin-key');
+  const apiClientWSettings = client('admin-key', apiConfig);
+  const apiClientShouldExist = client('admin-key');
+  const apiClientWSettingsShouldExist = client('admin-key', apiConfig);
   
   expect(apiClient).toBeInstanceOf(ApiClient);
   expect(apiClientWSettings).toBeInstanceOf(ApiClient);
+  expect(apiClientShouldExist).toBeInstanceOf(ApiClient);
+  expect(apiClientWSettingsShouldExist).toBeInstanceOf(ApiClient);  
+  // If we ask for a client with same key and config, we should get the same one.
+  expect(apiClientShouldExist).toBe(apiClient);
+  expect(apiClientWSettingsShouldExist).toBe(apiClientWSettings);
+  
 });

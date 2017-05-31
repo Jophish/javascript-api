@@ -32,19 +32,17 @@ export default class IdentityClient {
     });
     // Save each group and keep promise reference.
     for (var key in groups) {
-      if (groups.hasOwnProperty(key)) {
-        let group = groups[key];
+      let group = groups[key];
 
-        const ttId = group[0].trafficTypeId;
-        const envId = group[0].environmentId;
+      const ttId = group[0].trafficTypeId;
+      const envId = group[0].environmentId;
 
-        promises.push(
-          gateway.post(
-            group, 
-            `/trafficTypes/${ttId}/environments/${envId}/identities`
-          )
-        );
-      }
+      promises.push(
+        gateway.post(
+          group, 
+          `/trafficTypes/${ttId}/environments/${envId}/identities`
+        )
+      );
     }
 
     return Promise.all(promises);
@@ -53,7 +51,6 @@ export default class IdentityClient {
    * Update an identity
    */
   update(identity: IIdentity) {
-    // What to do with this? @Patch /trafficTypes/{trafficTypeId}/environments/{environmentId}/identities/{key}
     return gateway.post(
       identity, 
       `/trafficTypes/${identity.trafficTypeId}/environments/${identity.environmentId}/identities/${identity.key}/patch`
