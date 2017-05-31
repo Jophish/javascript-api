@@ -1,17 +1,18 @@
 import * as debug from 'debug';
+
 const {
   version: apiVersion,
   specVersion
 } = require('../../../package.json');
 
-export interface IIdentifyConfig {
+export interface IApiConfig {
   endpoint?: string,
   connectionTimeout?: number,
   debugEnabled?: boolean
 }
 
-export default class IdentifyConfig implements IIdentifyConfig {
-  private _defaults: IIdentifyConfig = {
+export default class ApiConfig implements IApiConfig {
+  private _defaults: IApiConfig = {
     endpoint: 'https://api.split.io/v1',
     connectionTimeout: 15000,
     debugEnabled: false
@@ -22,7 +23,7 @@ export default class IdentifyConfig implements IIdentifyConfig {
   readonly apiVersion: string = apiVersion;
   readonly apiSpecVersion: string = specVersion;
 
-  constructor(config: IIdentifyConfig = {}) {
+  constructor(config: IApiConfig = {}) {
     const {
       endpoint, connectionTimeout, debugEnabled
     } = config;
