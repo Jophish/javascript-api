@@ -16,10 +16,10 @@ const {
   apiSpecVersion
 } = apiClient.config;
 
-const TTClient: SplitAPI.TrafficTypeClient = apiClient.TrafficType;
-const EnvClient: SplitAPI.EnvironmentClient = apiClient.Environment;
-const AttrClient: SplitAPI.AttributeClient = apiClient.Attribute;
-const IdClient: SplitAPI.IdentityClient = apiClient.Identity;
+const TTClient: SplitAPI.TrafficTypeClient = apiClient.trafficTypes;
+const EnvClient: SplitAPI.EnvironmentClient = apiClient.environments;
+const AttrClient: SplitAPI.AttributeClient = apiClient.attributes;
+const IdClient: SplitAPI.IdentityClient = apiClient.identities;
 
 const myAttr: SplitAPI.IAttribute = new entities.Attribute('id');
 const myAttr2: SplitAPI.IAttribute = new entities.Attribute('id2', 'orgId', 'ttId', 'dispName', 'STRING', 'desc', false);
