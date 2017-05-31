@@ -5,7 +5,7 @@ import * as SA from 'superagent';
 import { address as getIpAddress } from 'ip';
 import * as debug from 'debug';
 
-import { IIdentifyConfig } from '../config/IdentifyConfig';
+import { IApiConfig } from '../config/ApiConfig';
 
 // Wrap SA with cache plugin
 require('superagent-cache')(SA);
@@ -24,7 +24,7 @@ const log = debug.default('split-api:gateway');
 
 class Gateway {
   private _authToken: string;
-  private _settings: IIdentifyConfig = {};
+  private _settings: IApiConfig = {};
   private _agent: Agent;
 
   constructor() {
@@ -37,7 +37,7 @@ class Gateway {
     this._authToken = 'Bearer ' + key;
   }
 
-  set settings(config: IIdentifyConfig) {
+  set settings(config: IApiConfig) {
     Object.assign(this._settings, config);
   }
 
