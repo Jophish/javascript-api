@@ -1,6 +1,6 @@
 {
   "name": "@splitsoftware/splitio-api",
-  "version": "1.0.0",
+  "version": "1.0.0-canary.0",
   "specVersion": "1.0",
   "description": "SDK designed to work with Split (https://www.split.io), the platform for controlled rollouts. The SDK interacts with Split API for identifying traffic.",
   "main": "lib/index.js",
@@ -8,15 +8,19 @@
   "types": "types",
   "scripts": {
     "build": "rimraf ./lib ./es && npm run build-ts && npm run babel",
+    "build:prod": "rimraf ./lib ./es && npm run build-ts && npm run babel:prod",    
     "test": "jest",
     "test:w": "jest --watch",
     "babel": "babel ./es --out-dir ./lib --source-maps",
+    "babel:prod": "babel ./es --out-dir ./lib --minified",    
     "build-ts": "tsc",
     "start": "node ./lib/index.js",
     "debug": "node --debug-brk ./lib/index.js",
     "pretest-ts-decls": "npm link",
     "test-ts-decls": "./scripts/ts-tests.sh",
-    "posttest-ts-decls": "npm unlink"
+    "posttest-ts-decls": "npm unlink",
+    "canary": "npm run build && npm publish --tag canary",
+    "stable": "npm run build:prod && npm publish"
   },
   "repository": {
     "type": "git",
