@@ -10,9 +10,13 @@ import { IAttribute as IAttributeFromDto } from '../src/api/dtos/Attribute';
 import { IEnvironment as IEnvironmentFromDto } from '../src/api/dtos/Environment';
 import { IIdentity as IIdentityFromDto } from '../src/api/dtos/Identity';
 
-declare function getClient (adminKey: string, config?: SplitAPI.IIdentifyConfig): SplitAPI.IdentifyClient;
+declare function getClient(adminKey: string, config?: SplitAPI.IIdentifyConfig): SplitAPI.ApiClient;
 
 declare namespace SplitAPI {
+  class ApiClient {
+    Identify: IdentifyClient
+  }
+
   interface IIdentifyConfig {
     endpoint?: string;
     connectionTimeout?: number;
@@ -20,7 +24,6 @@ declare namespace SplitAPI {
   }
 
   class IdentifyConfig implements IIdentifyConfig {
-    private _defaults;
     readonly endpoint: string;
     readonly connectionTimeout: number;
     readonly debugEnabled: boolean;
@@ -40,7 +43,7 @@ declare namespace SplitAPI {
   }
 
   class AttributeClient {
-    list(): Promise<superagent.Response>
+    list(trafficTypeId: string): Promise<superagent.Response>
     create(attr: IAttribute): Promise<superagent.Response>
     delete(attr: IAttribute): Promise<superagent.Response>
   }

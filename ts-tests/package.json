@@ -1,0 +1,12 @@
+{
+  "name": "ts-tests",
+  "version": "1.0.0",
+  "description": "API SDK tests for TypeScript declaration files",
+  "author": "Nico Zelaya",
+  "license": "Apache-2.0",
+  "repository": "splitio/javascript-api",
+  "dependencies": {
+    "@splitsoftware/splitio-api": "1.0.0",
+    "typescript": "latest"
+  }
+}

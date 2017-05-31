@@ -11,6 +11,6 @@ export function getClient (adminKey: string, config?: IIdentifyConfig) {
   }
 
   return {
-    identifyClient
+    Identify: identifyClient
   };
 }
