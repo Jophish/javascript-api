@@ -1,4 +1,4 @@
-import IdentifyConfig from '../IdentifyConfig';
+import ApiConfig from '../ApiConfig';
 
 const defaultSettings = {
   endpoint: 'https://api.split.io/v1',
@@ -7,11 +7,11 @@ const defaultSettings = {
 };
 
 test('should be a class (function)', () => {
-  expect(typeof IdentifyConfig).toBe('function');
+  expect(typeof ApiConfig).toBe('function');
 });
 
 test('instances should expose an API', () => {
-  const config = new IdentifyConfig();
+  const config = new ApiConfig();
 
   expect(config.endpoint).toBeDefined();
   expect(config.connectionTimeout).toBeDefined();
@@ -19,7 +19,7 @@ test('instances should expose an API', () => {
 });
 
 test('should have configurations by default', () => {
-  const config = new IdentifyConfig();  
+  const config = new ApiConfig();  
 
   expect(config.endpoint).toBe(defaultSettings.endpoint);
   expect(config.connectionTimeout).toBe(defaultSettings.connectionTimeout);
@@ -32,7 +32,7 @@ test('should be able to receive settings on creation', () => {
     connectionTimeout: 1010,
     debugEnabled: true
   };
-  const config = new IdentifyConfig(settings);
+  const config = new ApiConfig(settings);
 
   expect(config.endpoint).toBe(settings.endpoint);
   expect(config.connectionTimeout).toBe(settings.connectionTimeout);
@@ -40,7 +40,7 @@ test('should be able to receive settings on creation', () => {
 });
 
 test('should be able to receive partial settings', () => {
-  const config = new IdentifyConfig({
+  const config = new ApiConfig({
     endpoint: 'test_url'
   });
 
