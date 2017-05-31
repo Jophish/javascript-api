@@ -12,6 +12,7 @@
       "statements": 50
     }
   },
+  "coverageReporters": ["html", "text"],
   "transform": {
     "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
   },
