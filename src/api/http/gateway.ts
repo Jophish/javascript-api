@@ -6,6 +6,17 @@ import { address as getIpAddress } from 'ip';
 import * as debug from 'debug';
 
 import { IApiConfig } from '../config/ApiConfig';
+// Remove once superagent types at DefinitelyTyped get updated
+declare namespace request {
+  interface SuperAgentRequest extends Request {
+    agent(agent: Agent): this;
+    agent(): this;
+
+    method: string;
+    url: string;
+    cookies: string;
+  }
+}
 
 // Wrap SA with cache plugin
 require('superagent-cache')(SA);
