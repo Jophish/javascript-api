@@ -1,16 +1,16 @@
-import IdentifyClient, { IIdentifyConfig } from './api/IdentifyClient';
+import ApiClient, { IApiConfig, entities as dtoEntities } from './api/ApiClient';
 
 let clientsCache = {};
 
-export function getClient (adminKey: string, config?: IIdentifyConfig) {
-  let identifyClient = clientsCache[adminKey];
+export function client(adminKey: string, config?: IApiConfig) {
+  const instanceKey = `adminKey_${ config ? JSON.stringify(config) : ''}`;
+  let apiClient = clientsCache[instanceKey];
 
-  if (!identifyClient) {
-    clientsCache[adminKey] = new IdentifyClient(adminKey, config);
-    identifyClient = clientsCache[adminKey];
+  if (!apiClient) {
+    apiClient = clientsCache[instanceKey] = new ApiClient(adminKey, config);
   }
 
-  return {
-    Identify: identifyClient
-  };
+  return apiClient;
 }
+
+export const entities = dtoEntities;
