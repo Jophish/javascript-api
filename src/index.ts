@@ -1,6 +1,6 @@
 import ApiClient, { IApiConfig, entities as dtoEntities } from './api/ApiClient';
 
-let clientsCache = {};
+const clientsCache = {};
 
 export function client(adminKey: string, config?: IApiConfig) {
   const instanceKey = `adminKey_${ config ? JSON.stringify(config) : ''}`;
