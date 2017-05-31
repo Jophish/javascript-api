@@ -1,6 +1,6 @@
 export interface IEnvironment {
-  id: string,
-  name: string
+  id: string;
+  name: string;
 }
 
 export default class Environment implements IEnvironment {

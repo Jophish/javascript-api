@@ -8,7 +8,7 @@ test('instances should parse and expose properties received on creation', () => 
   const values = {
     val1: 'asd'
   };
-  const identity = new Identity('key', 'envId', 'ttId', 'SplitTesting', values);
+  const identity = new Identity('key', values, 'envId', 'ttId', 'SplitTesting');
 
   expect(identity.key).toBe('key');
   expect(identity.organizationId).toBe('SplitTesting');  
