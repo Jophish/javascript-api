@@ -80,7 +80,7 @@ apiClient.attributes.create(attrObject).then(res => {
 Get the package as always, but enjoy custom typing! The namespace SplitAPI contains
 the custom types.
 
-If by any chance, you need the TS source code, just import the `/src/` folder:  
+If by any chance, you need the TS source code, just import the `/src/` folder index (Keep in mind this is a .ts file):  
 `import { client, entities } from '@splitsoftware/splitio-api/src'`
 
 ```TypeScript
