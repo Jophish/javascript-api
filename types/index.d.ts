@@ -5,25 +5,29 @@
 import * as superagent from 'superagent';
 // We import these directly from source, taking advantage of having the src code 
 // on the same package.
-import { ITrafficType as ITrafficTypeFromDto } from '../src/api/dtos/TrafficType';
-import { IAttribute as IAttributeFromDto } from '../src/api/dtos/Attribute';
-import { IEnvironment as IEnvironmentFromDto } from '../src/api/dtos/Environment';
-import { IIdentity as IIdentityFromDto } from '../src/api/dtos/Identity';
+import TrafficTypeDTO, { ITrafficType as ITrafficTypeFromDto } from '../src/api/dtos/TrafficType';
+import AttributeDTO, { IAttribute as IAttributeFromDto } from '../src/api/dtos/Attribute';
+import EnvironmentDTO, { IEnvironment as IEnvironmentFromDto } from '../src/api/dtos/Environment';
+import IdentityDTO, { IIdentity as IIdentityFromDto } from '../src/api/dtos/Identity';
 
-declare function getClient(adminKey: string, config?: SplitAPI.IIdentifyConfig): SplitAPI.ApiClient;
+declare function client(adminKey: string, config?: SplitAPI.IApiConfig): SplitAPI.ApiClient;
+
+declare namespace entities {
+  class TrafficType extends TrafficTypeDTO {}
+  class Attribute extends AttributeDTO {}
+  class Environment extends EnvironmentDTO {}
+  class Identity extends IdentityDTO {}
+}
 
 declare namespace SplitAPI {
-  class ApiClient {
-    Identify: IdentifyClient
-  }
 
-  interface IIdentifyConfig {
+  interface IApiConfig {
     endpoint?: string;
     connectionTimeout?: number;
     debugEnabled?: boolean;
   }
 
-  class IdentifyConfig implements IIdentifyConfig {
+  class ApiConfig implements IApiConfig {
     readonly endpoint: string;
     readonly connectionTimeout: number;
     readonly debugEnabled: boolean;
@@ -31,8 +35,8 @@ declare namespace SplitAPI {
     readonly apiSpecVersion: string;
   }
 
-  class IdentifyClient {
-    readonly config: IdentifyConfig
+  class ApiClient {
+    readonly config: ApiConfig
     readonly TrafficType: TrafficTypeClient
     readonly Attribute: AttributeClient
     readonly Environment: EnvironmentClient

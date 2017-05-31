@@ -1,13 +1,12 @@
-import { getClient, SplitAPI } from '@splitsoftware/splitio-api';
+import { client, entities, SplitAPI } from '@splitsoftware/splitio-api';
 
-let client: SplitAPI.ApiClient = getClient('some-key');
-let config: SplitAPI.IIdentifyConfig = {
+let apiClient: SplitAPI.ApiClient = client('some-key');
+let config: SplitAPI.IApiConfig = {
   connectionTimeout: 20,
   debugEnabled: true,
   endpoint: 'http://google.com'
 };
-client = getClient('some-key', config);
-const identifyClient: SplitAPI.IdentifyClient = client.Identify;
+apiClient = client('some-key', config);
 
 const {
   connectionTimeout,
@@ -15,12 +14,24 @@ const {
   endpoint,
   apiVersion,
   apiSpecVersion
-} = client.Identify.config;
+} = apiClient.config;
 
-const TTClient: SplitAPI.TrafficTypeClient = identifyClient.TrafficType;
-const EnvClient: SplitAPI.EnvironmentClient = identifyClient.Environment;
-const AttrClient: SplitAPI.AttributeClient = identifyClient.Attribute;
-const IdClient: SplitAPI.IdentityClient = identifyClient.Identity;
+const TTClient: SplitAPI.TrafficTypeClient = apiClient.TrafficType;
+const EnvClient: SplitAPI.EnvironmentClient = apiClient.Environment;
+const AttrClient: SplitAPI.AttributeClient = apiClient.Attribute;
+const IdClient: SplitAPI.IdentityClient = apiClient.Identity;
+
+const myAttr: SplitAPI.IAttribute = new entities.Attribute('id');
+const myAttr2: SplitAPI.IAttribute = new entities.Attribute('id2', 'orgId', 'ttId', 'dispName', 'STRING', 'desc', false);
+
+const myTT: SplitAPI.ITrafficType = new entities.TrafficType('id', 'name');
+const myTT2: SplitAPI.ITrafficType = new entities.TrafficType('id', 'name', 'dispAttrId');
+
+// All params are required
+const myEnv: entities.Environment = new entities.Environment('id', 'name'); 
+
+const myIdentity: entities.Identity = new entities.Identity('key', {val1: 'val1'});
+const myIdentity2: entities.Identity = new entities.Identity('key', {val1: 'val1'}, 'envId', 'ttId', 'orgId');
 
 const trafficType: SplitAPI.ITrafficType = {
   id: 'id',
