@@ -1,5 +1,7 @@
 [ ![Codeship Status for splitio/javascript-api](https://app.codeship.com/projects/caf0e100-2860-0135-d25d-5ece7f76f3e5/status?branch=master)](https://app.codeship.com/projects/223307)
 
+[![Coveralls](https://img.shields.io/coveralls/splitio/javascript-api.svg)]()
+
 # Split JavaScript API
 Split public API SDK for JavaScript language.
 

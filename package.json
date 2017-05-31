@@ -9,8 +9,8 @@
   "scripts": {
     "build": "rimraf ./lib ./es && npm run build-ts && npm run babel",
     "build:prod": "rimraf ./lib ./es && npm run build-ts && npm run babel:prod",
-    "test": "jest",
-    "test:w": "jest --watch",
+    "test": "jest --config ./jestconfig.json",
+    "test:w": "jest --watch --config ./jestconfig.json",
     "babel": "babel ./es --out-dir ./lib --source-maps",
     "babel:prod": "babel ./es --out-dir ./lib --minified",
     "build-ts": "tsc",
@@ -58,18 +58,5 @@
     "rimraf": "^2.6.1",
     "ts-jest": "^20.0.4",
     "typescript": "^2.3.3"
-  },
-  "jest": {
-    "verbose": true,
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*)\\.(ts)$",
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "json"
-    ]
   }
 }
