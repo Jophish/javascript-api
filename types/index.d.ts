@@ -32,7 +32,7 @@ declare namespace SplitAPI {
   }
 
   class IdentifyClient {
-    readonly config: IIdentifyConfig
+    readonly config: IdentifyConfig
     readonly TrafficType: TrafficTypeClient
     readonly Attribute: AttributeClient
     readonly Environment: EnvironmentClient

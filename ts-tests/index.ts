@@ -9,6 +9,14 @@ let config: SplitAPI.IIdentifyConfig = {
 client = getClient('some-key', config);
 const identifyClient: SplitAPI.IdentifyClient = client.Identify;
 
+const {
+  connectionTimeout,
+  debugEnabled,
+  endpoint,
+  apiVersion,
+  apiSpecVersion
+} = client.Identify.config;
+
 const TTClient: SplitAPI.TrafficTypeClient = identifyClient.TrafficType;
 const EnvClient: SplitAPI.EnvironmentClient = identifyClient.Environment;
 const AttrClient: SplitAPI.AttributeClient = identifyClient.Attribute;
