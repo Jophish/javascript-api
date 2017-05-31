@@ -2,6 +2,8 @@
 
 [![Coveralls](https://img.shields.io/coveralls/splitio/javascript-api.svg)]()
 
+[![David](https://img.shields.io/david/splitio/javascript-api.svg)]() [![David](https://img.shields.io/david/dev/splitio/javascript-api.svg)]()
+
 # Split JavaScript API
 Split public API SDK for JavaScript language.
 
