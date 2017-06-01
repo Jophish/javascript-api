@@ -1,6 +1,6 @@
 {
   "name": "@splitsoftware/splitio-api",
-  "version": "1.0.0-canary.0",
+  "version": "1.0.0-canary.1",
   "specVersion": "1.0",
   "description": "SDK designed to work with Split (https://www.split.io), the platform for controlled rollouts. The SDK interacts with Split API for identifying traffic.",
   "main": "lib/index.js",
