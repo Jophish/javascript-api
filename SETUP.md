@@ -10,7 +10,8 @@ This library is written in [TypeScript](https://www.typescriptlang.org/) and pro
 
 ## Basic setup
 How to set up the API on the different environments. 
-We wrote the library in TS and provide build for ES modules and CommonJS modules, so you can make your choice.
+We wrote the library in TS and provide build for ES modules and CommonJS modules, so you can make your choice. Either way,
+keep in mind that you will need to take care of the necessary transpiling if running a build that is not the CommonJS one.
 
 ### If you are working with normal JavaScript, using CommonJS
 
@@ -50,7 +51,7 @@ pointing to the files under `/es` folder, which is the build with ES modules.
 
 ```JavaScript
 import { client, entities } from '@splitsoftware/splitio-api';
-// or if you want to import our build with ES modules directly, without support for package.json module key
+// or if you want to import our build with ES modules directly
 import { client, entities } from '@splitsoftware/splitio-api/es';
 
 // Get the client, settings object is optional.
@@ -80,7 +81,7 @@ apiClient.attributes.create(attrObject).then(res => {
 Get the package as always, but enjoy custom typing! The namespace SplitAPI contains
 the custom types.
 
-If by any chance, you need the TS source code, just import the `/src/` folder index (Keep in mind this is a .ts file):  
+If by any chance, you need the TS source code, just import the `/src` folder index (Keep in mind this is a .ts file):  
 `import { client, entities } from '@splitsoftware/splitio-api/src'`
 
 ```TypeScript
@@ -110,3 +111,5 @@ apiClient.attributes.create(attrObject).then(res => {
   console.log('Attribute created: ' + JSON.stringify(res.body));
 });
 ```
+
+### A note on the different builds
