@@ -10,10 +10,12 @@ This library is written in [TypeScript](https://www.typescriptlang.org/) and pro
 
 ## Basic setup
 How to set up the API on the different environments. 
+
 We wrote the library in TS and provide build for ES modules and CommonJS modules, so you can make your choice. Either way,
 keep in mind that you will need to take care of the necessary transpiling if running a build that is not the CommonJS one.
 
 ### If you are working with normal JavaScript, using CommonJS
+_This build is created to run on Node >= 4.0.0_
 
 ```JavaScript
 var SplitAPI = require('@splitsoftware/splitio-api');
@@ -111,5 +113,3 @@ apiClient.attributes.create(attrObject).then(res => {
   console.log('Attribute created: ' + JSON.stringify(res.body));
 });
 ```
-
-### A note on the different builds
