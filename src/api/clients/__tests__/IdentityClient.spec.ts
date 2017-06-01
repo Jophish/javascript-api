@@ -8,7 +8,7 @@ const NicoZelayaIdent = {
   'trafficTypeId': 'userTT',
   'values': {
     'username': 'NicoZelaya',
-    'email': 'nico@split.io',
+    'email': 'nico@gmail.com',
     'dob': '02/08/1989'
   }
 };
@@ -88,7 +88,7 @@ test('it should be able to save a collection of identities, returning a promise'
 test('it should be able to update an identity, returning a promise', () => {
   const identity = new IdentityClient();
   const nicoUpdate = Object.assign({
-    email: 'nicolas.zelaya@split.io'
+    email: 'nicolas.zelaya@gmail.com'
   }, NicoZelayaIdent);
   const updatePromise = identity.update(nicoUpdate);
 

@@ -9,7 +9,7 @@ Object {
   "trafficTypeId": "userTT",
   "values": Object {
     "dob": "02/08/1989",
-    "email": "nico@split.io",
+    "email": "nico@gmail.com",
     "username": "NicoZelaya",
   },
 }
@@ -24,7 +24,7 @@ Object {
   "trafficTypeId": "userTT",
   "values": Object {
     "dob": "02/08/1989",
-    "email": "nicolas.zelaya@split.io",
+    "email": "nicolas.zelaya@gmail.com",
     "username": "NicoZelaya",
   },
 }
