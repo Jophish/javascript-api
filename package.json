@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/splitio/javascript-api#readme",
   "dependencies": {
+    "debug": "^2.6.8",
     "ip": "^1.1.5",
     "superagent": "^3.5.2",
     "superagent-cache": "^2.0.0"
