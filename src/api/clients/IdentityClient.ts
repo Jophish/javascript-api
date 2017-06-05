@@ -51,9 +51,9 @@ export default class IdentityClient {
    * Update an identity
    */
   update(identity: IIdentity) {
-    return gateway.post(
+    return gateway.patch(
       identity, 
-      `/trafficTypes/${identity.trafficTypeId}/environments/${identity.environmentId}/identities/${identity.key}/patch`
+      `/trafficTypes/${identity.trafficTypeId}/environments/${identity.environmentId}/identities/${identity.key}`
     );
   };
   /**
