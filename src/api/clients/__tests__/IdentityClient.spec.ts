@@ -87,9 +87,8 @@ test('it should be able to save a collection of identities, returning a promise'
 
 test('it should be able to update an identity, returning a promise', () => {
   const identity = new IdentityClient();
-  const nicoUpdate = Object.assign({
-    email: 'nicolas.zelaya@gmail.com'
-  }, NicoZelayaIdent);
+  const nicoUpdate = Object.assign({}, NicoZelayaIdent);
+  nicoUpdate.values.email = 'nicolas.zelaya@gmail.com';
   const updatePromise = identity.update(nicoUpdate);
 
   expect(updatePromise.then).toBeDefined();

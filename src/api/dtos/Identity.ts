@@ -1,9 +1,9 @@
 export interface IIdentity {
   key: string;
+  environmentId: string;
+  trafficTypeId: string;
   organizationId?: string;
-  environmentId?: string;
-  trafficTypeId?: string;
-  values: {
+  values?: {
     [key: string]: string
   };
 }
@@ -11,11 +11,11 @@ export interface IIdentity {
 export default class Identity implements IIdentity {
   constructor(
     readonly key: string,
-    readonly values: {
+    readonly environmentId: string,
+    readonly trafficTypeId: string,
+    readonly organizationId?: string,
+    readonly values?: {
       [key: string]: string
-    },
-    readonly environmentId?: string,
-    readonly trafficTypeId?: string,
-    readonly organizationId?: string
+    }
   ) {};
 }

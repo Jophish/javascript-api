@@ -5,7 +5,7 @@ test('should be a class (function)', () => {
 });
 
 test('instances should parse and expose properties received on creation', () => {
-  const attribute = new Attribute('id', 'SplitTesting', 'ttId', 'name', 'dt', 'desc', true);
+  const attribute = new Attribute('ttId', 'id', 'SplitTesting', 'name', 'dt', 'desc', true);
 
   expect(attribute.id).toBe('id');
   expect(attribute.trafficTypeId).toBe('ttId');
