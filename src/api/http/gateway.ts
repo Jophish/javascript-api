@@ -6,15 +6,6 @@ import { address as getIpAddress } from 'ip';
 import * as debug from 'debug';
 
 import { IApiConfig } from '../config/ApiConfig';
-// Remove once superagent types at DefinitelyTyped get updated
-interface SuperAgentRequest extends Request, SA.SuperAgentRequest {
-  agent(agent: Agent): this;
-  agent(): this;
-
-  method: string;
-  url: string;
-  cookies: string;
-}
 
 // Wrap SA with cache plugin
 require('superagent-cache')(SA);
@@ -53,37 +44,43 @@ class Gateway {
   get(path: string): Promise<SA.Response> {
     const req = SA.get(this.resolveUrl(path));
 
-    return this.executeRequest(<SuperAgentRequest>req);
+    return this.executeRequest(req);
   }
 
   del(path: string): Promise<SA.Response> {
     const req = SA.delete(this.resolveUrl(path));
 
-    return this.executeRequest(<SuperAgentRequest>req);
+    return this.executeRequest(req);
   }
 
   post(data: Object, path: string): Promise<SA.Response> {
     const req = SA.post(this.resolveUrl(path))
       .send(data);
 
-    return this.executeRequest(<SuperAgentRequest>req);
+    return this.executeRequest(req);
   }
 
   put(data: Object, path: string): Promise<SA.Response> {
     const req = SA.put(this.resolveUrl(path))
       .send(data);
 
-    return this.executeRequest(<SuperAgentRequest>req);
+    return this.executeRequest(req);
   }
 
   patch(data: Object, path: string): Promise<SA.Response> {
     const req = SA.patch(this.resolveUrl(path))
       .send(data);
 
-    return this.executeRequest(<SuperAgentRequest>req);
+    return this.executeRequest(req);
   }
 
-  private executeRequest(req: SuperAgentRequest): Promise<SA.Response> {
+  rejectedReq(msg: string): Promise<string> {
+    return new Promise((res, rej) => {
+      rej(msg);
+    });
+  }
+
+  private executeRequest(req: SA.SuperAgentRequest): Promise<SA.Response> {
     req.agent(this._agent)
       .set('Authorization', this._authToken)
       .set('SplitSDKVersion', apiVersion)
@@ -95,7 +92,7 @@ class Gateway {
     return req
       .then((res) => {
         log('Received json: ' + JSON.stringify(res.body));
-        return res;
+        return res.body;
       })
       .catch((err) => {
         log(`Error Executing Request: method=${req.method} path=${req.url} status=${err.status}`);
