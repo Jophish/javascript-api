@@ -1,3 +1,13 @@
+function buildResponseObject(method, data) {
+  const resp = {
+    body: { // Mimick superagent response object
+      method
+    }
+  };
+  Object.assign(resp.body, data);
+  return resp;
+} 
+
 module.exports = [
   {
     /**
@@ -36,19 +46,19 @@ module.exports = [
     },
     // Http methods. "data" parameter is the return value of the fixtures
     get: function (match, data) {
-      return Object.assign({ method: 'GET' }, data);
+      return buildResponseObject('GET', data);
     },
     delete: function (match, data) {
-      return Object.assign({ method: 'DELETE' }, data);
+      return buildResponseObject('DELETE', data);
     },
     post: function (match, data) {
-      return Object.assign({ method: 'POST' }, data);
+      return buildResponseObject('POST', data);
     },
     put: function (match, data) {
-      return Object.assign({ method: 'PUT' }, data);
+      return buildResponseObject('PUT', data);
     },
     patch: function (match, data) {
-      return Object.assign({ method: 'PATCH' }, data);
+      return buildResponseObject('PATCH', data);      
     }
   }
 ];
