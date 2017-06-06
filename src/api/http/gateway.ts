@@ -100,7 +100,7 @@ class Gateway {
       })
       .catch((err) => {
         log(`Error Executing Request: method=${req.method} path=${req.url} status=${err.status}`);
-        throw (err instanceof Error ? err : new Error(err));
+        throw err;
       });
   }
 
