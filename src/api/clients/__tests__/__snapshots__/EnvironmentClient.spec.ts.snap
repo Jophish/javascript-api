@@ -1,24 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it should be able return a promise resolving to list the environments 1`] = `
-Object {
-  "objects": Array [
-    Object {
-      "id": "7ee47a70-4498-11e7-84b7-126798e48ef6",
-      "name": "QA",
-    },
-    Object {
-      "id": "8105acc0-4498-11e7-a90e-0ee709202212",
-      "name": "LOAD",
-    },
-    Object {
-      "id": "830ca480-4491-11e7-84b7-126798e48ef6",
-      "name": "STG",
-    },
-    Object {
-      "id": "8344a470-4491-11e7-84b7-126798e48ef6",
-      "name": "PROD",
-    },
-  ],
-}
+Array [
+  Environment {
+    "id": "7ee47a70-4498-11e7-84b7-126798e48ef6",
+    "name": "QA",
+  },
+  Environment {
+    "id": "8105acc0-4498-11e7-a90e-0ee709202212",
+    "name": "LOAD",
+  },
+  Environment {
+    "id": "830ca480-4491-11e7-84b7-126798e48ef6",
+    "name": "STG",
+  },
+  Environment {
+    "id": "8344a470-4491-11e7-84b7-126798e48ef6",
+    "name": "PROD",
+  },
+]
 `;

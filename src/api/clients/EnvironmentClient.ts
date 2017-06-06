@@ -1,10 +1,13 @@
 import gateway from '../http/gateway';
+import Environment, { IEnvironment } from '../dtos/Environment';
 
 export default class EnvironmentClient {
   /**
    * Lists all environments
    */
-  list() {
-    return gateway.get('/environments');
+  list(): Promise<Array<Environment>> {
+    return gateway.get('/environments').then((res: any) => {
+      return res.objects.map(e => new Environment(e));
+    });
   };
 }

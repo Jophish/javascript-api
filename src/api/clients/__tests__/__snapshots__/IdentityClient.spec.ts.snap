@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`it should be able to create an identity, returning a promise 1`] = `
-Object {
+Identity {
   "environmentId": "STG",
   "key": "NicoZelaya",
   "organizationId": "SplitTesting",
@@ -15,17 +15,19 @@ Object {
 }
 `;
 
-exports[`it should be able to update an identity, returning a promise 1`] = `
-Object {
-  "environmentId": "STG",
-  "key": "NicoZelaya",
-  "organizationId": "SplitTesting",
-  "timestamp": 1496102956729,
-  "trafficTypeId": "userTT",
-  "values": Object {
-    "dob": "02/08/1989",
-    "email": "nicolas.zelaya@gmail.com",
-    "username": "NicoZelaya",
+exports[`it should be able to save a collection of identities, returning a promise resolving to the results 1`] = `
+Array [
+  Identity {
+    "environmentId": "STG",
+    "key": "NicoZelaya",
+    "organizationId": "SplitTesting",
+    "timestamp": 1496105118658,
+    "trafficTypeId": "userTT",
+    "values": Object {
+      "dob": "02/08/1989",
+      "email": "nico@gmail.com",
+      "username": "NicoZelaya",
+    },
   },
-}
+]
 `;
