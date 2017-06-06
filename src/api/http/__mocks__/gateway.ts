@@ -47,10 +47,7 @@ class MockGateway {
   post(data: Object, path: string) {
     return new Promise((res, rej) => {
       process.nextTick(() => {
-        res({
-          response: MOCKS.POST[path],
-          data
-        });
+        res(Object.assign({}, MOCKS.POST[path]));
       });
     });
   }
@@ -58,10 +55,7 @@ class MockGateway {
   put(data: Object, path: string) {
     return new Promise((res, rej) => {
       process.nextTick(() => {
-        res({
-          response: MOCKS.PUT[path],
-          data
-        });
+        res(Object.assign({}, MOCKS.PUT[path]));
       });
     });
   }
@@ -69,11 +63,14 @@ class MockGateway {
   patch(data: Object, path: string) {
     return new Promise((res, rej) => {
       process.nextTick(() => {
-        res({
-          response: MOCKS.PATCH[path],
-          data
-        });
+        res(Object.assign({}, MOCKS.PATCH[path]));
       });
+    });
+  }
+
+  rejectedReq(msg: string): Promise<string> {
+    return new Promise((res, rej) => {
+      rej(msg);
     });
   }
 }

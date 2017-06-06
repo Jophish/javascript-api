@@ -1,3 +1,7 @@
+/**
+ * NOTE: Please, keep in sync the mocked implementation any time
+ * public methods are updated.
+ */
 import { Agent } from 'https';
 import { hostname as getMachineName } from 'os';
 
@@ -74,9 +78,9 @@ class Gateway {
     return this.executeRequest(req);
   }
 
-  rejectedReq(msg: string): Promise<string> {
+  rejectedReq(err: Error): Promise<Error> {
     return new Promise((res, rej) => {
-      rej(msg);
+      rej(err);
     });
   }
 
@@ -96,7 +100,7 @@ class Gateway {
       })
       .catch((err) => {
         log(`Error Executing Request: method=${req.method} path=${req.url} status=${err.status}`);
-        throw new Error(err);
+        throw (err instanceof Error ? err : new Error(err));
       });
   }
 

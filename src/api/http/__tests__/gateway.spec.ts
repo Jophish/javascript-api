@@ -125,6 +125,13 @@ test('If the request fails, returned promise should reject and bring the error',
   });
 });
 
+test('rejectedReq method should reject a promise with given error', () => {
+  const error = new Error('test');
+  return gateway.rejectedReq(error)
+                .then(res => expect(res).toBe('this should never happen'))
+                .catch(err => expect(err).toMatchObject(error));
+});
+
 afterAll(() => {
   // Remove custom mock
   superagentMock.unset();
