@@ -78,9 +78,9 @@ class Gateway {
     return this.executeRequest(req);
   }
 
-  rejectedReq(err: Error): Promise<Error> {
+  rejectedReq(err: string | Error): Promise<Error> {
     return new Promise((res, rej) => {
-      rej(err);
+      rej(err instanceof Error ? err : new Error(err));
     });
   }
 

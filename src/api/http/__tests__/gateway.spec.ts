@@ -129,7 +129,19 @@ test('rejectedReq method should reject a promise with given error', () => {
   const error = new Error('test');
   return gateway.rejectedReq(error)
                 .then(res => expect(res).toBe('this should never happen'))
-                .catch(err => expect(err).toMatchObject(error));
+                .catch(err => {
+                  expect(err).toBeInstanceOf(Error);                  
+                  expect(err).toMatchObject(error);
+                });
+});
+
+test('rejectedReq method should reject a promise with an error with given message', () => {
+  return gateway.rejectedReq('test_error_msg')
+                .then(res => expect(res).toBe('this should never happen'))
+                .catch(err => {
+                  expect(err).toBeInstanceOf(Error);
+                  expect(err.message).toBe('test_error_msg');
+                });
 });
 
 afterAll(() => {
