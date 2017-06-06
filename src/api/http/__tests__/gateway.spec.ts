@@ -121,7 +121,7 @@ test('If the request fails, returned promise should reject and bring the error',
     expect(true).toBeFalsy();
   }, err => {
     expect(err).toBeInstanceOf(Error);
-    expect(err.message).toBe('Error: Forced failure');
+    expect(err.message).toBe('Forced failure');
   });
 });
 
