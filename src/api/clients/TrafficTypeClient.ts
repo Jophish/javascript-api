@@ -7,7 +7,7 @@ export default class TrafficTypeClient {
    */
   list(): Promise<TrafficType[]> {
     return gateway.get('/trafficTypes').then((res: any) => {
-      return res.objects.map(e => new TrafficType(e));
+      return res.map(e => new TrafficType(e));
     });
   };
 }

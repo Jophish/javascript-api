@@ -8,7 +8,7 @@ export default class AttributeClient {
   list(ttId: string): Promise<Attribute[]> {
     if (typeof ttId === 'string') {
       return gateway.get(`/trafficTypes/${ttId}/schema`).then((res: any) => {
-        return res.objects.map(e => new Attribute(e));
+        return res.map(e => new Attribute(e));
       });
     } else {
       return <any> gateway.rejectedReq(new Error('You need to provide a Traffic Type ID to get a list of attributes.'));

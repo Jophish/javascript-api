@@ -7,7 +7,7 @@ export default class EnvironmentClient {
    */
   list(): Promise<Environment[]> {
     return gateway.get('/environments').then((res: any) => {
-      return res.objects.map(e => new Environment(e));
+      return res.map(e => new Environment(e));
     });
   };
 }
