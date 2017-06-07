@@ -5,7 +5,7 @@ export default class AttributeClient {
   /**
    * Lists all attributes of a given traffic type
    */
-  list(ttId: string): Promise<Array<Attribute>> | Promise<Error> {
+  list(ttId: string): Promise<Attribute[]> | Promise<Error> {
     if (typeof ttId === 'string') {
       return gateway.get(`/trafficTypes/${ttId}/schema`).then((res: any) => {
         return res.objects.map(e => new Attribute(e));
@@ -30,7 +30,7 @@ export default class AttributeClient {
   /**
    * Deletes an attribute
    */
-  delete(attribute: IAttribute) {
+  delete(attribute: IAttribute): Promise<boolean> | Promise<Error> {
     try {
       const attr = new Attribute(attribute);
       return gateway.del(`/trafficTypes/${attr.trafficTypeId}/schema/${attr.id}`);     
