@@ -9,7 +9,7 @@ This library is written in [TypeScript](https://www.typescriptlang.org/) and pro
 ***NOTE: If you don't know which build you need, just stick with the ES5 + CommonJS which is defaulted.***
 
 ## Basic setup
-How to set up the API on the different environments. 
+How to set up this project for the different environments:
 
 We wrote the library in TS and provide build for ES modules and CommonJS modules, so you can make your choice. Either way,
 keep in mind that you will need to take care of the necessary transpiling if running a build that is not the CommonJS one.
