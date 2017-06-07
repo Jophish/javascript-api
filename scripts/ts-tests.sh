@@ -12,11 +12,11 @@ if [ $? -eq 0 ]
 then
   echo -e "Successfully compiled TS tests. About to unlink and go back to previous directory.\n"
   npm unlink @splitsoftware/splitio-api
-  cd ..
+  cd -
   exit 0
 else
   echo -e "Error compiling TS tests. About to unlink and go back to previous directory.\n"
   npm unlink @splitsoftware/splitio-api
-  cd ..
+  cd -
   exit 1
 fi
