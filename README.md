@@ -19,15 +19,18 @@ Split’s SDKs are in active development and are constantly tested for quality. 
 
 Split builds on feature flags to create the platform for controlled rollouts, so any team can target customers and release or revert new features without a deployment—or touching code. Get started quickly with SDKs in your language, then create on/off, percentage, and multivariate rollout plans in seconds. Integrations with the services you use to monitor, alert and track issues reduce time-to-resolution when things go wrong, and hotfixes are entirely avoided by killing problem features with a single click.
 
- * What you can do with Split. Split goes beyond the simple on/off capabilities of basic feature flagging to give your team the power to:
+**What you can do with Split** 
 
- 	* Create multivariate feature releases
-	* Create A/B feature releases
-	* Kill any feature, over the browser, with a single click
-	* Target releases to subsets of your audience, including percentage roll outs, whitelists,    attribute-based targeting, and individual user IDs 
-	* Integrate with the services your team uses to monitor, plan and communicate, like Datadog, JIRA and Slack 
-	* Manage team access, with features like two-factor authentication and role-based permissioning.
+Split goes beyond the simple on/off capabilities of basic feature flagging to give your team the power to:
 
+* Create multivariate feature releases
+* Create A/B feature releases
+* Kill any feature, over the browser, with a single click
+* Target releases to subsets of your audience, including percentage roll outs, whitelists,    attribute-based targeting, and individual user IDs 
+* Integrate with the services your team uses to monitor, plan and communicate, like Datadog, JIRA and Slack 
+* Manage team access, with features like two-factor authentication and role-based permissioning.
+
+**Languages** 
 
 Split has built and maintains SDKs for:
 
@@ -43,7 +46,7 @@ For a comprehensive list of opensource projects visit our [Github page](https://
 
 **Try Split for Free:**
 
-Split is available as a 30-day free trial. To create an account, visit [split.io/trial](https://www.split.io/trial).
+Split is available as a 30-day free trial. To create an account, visit [split.io/signup](https://www.split.io/signup).
 
 **Learn more about Split:** 
 
