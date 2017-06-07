@@ -1,5 +1,7 @@
 import { client, entities, SplitAPI } from '@splitsoftware/splitio-api';
 
+/******* API Client & Config classes *******/
+
 let apiClient: SplitAPI.ApiClient = client('some-key');
 let config: SplitAPI.IApiConfig = {
   connectionTimeout: 20,
@@ -16,26 +18,57 @@ const {
   apiSpecVersion
 } = apiClient.config;
 
+let num: number = connectionTimeout;
+let bool: boolean = debugEnabled;
+let str: string = endpoint;
+str = apiVersion;
+str = apiSpecVersion;
+
+/******* Client classes *******/
+
 const TTClient: SplitAPI.TrafficTypeClient = apiClient.trafficTypes;
 const EnvClient: SplitAPI.EnvironmentClient = apiClient.environments;
 const AttrClient: SplitAPI.AttributeClient = apiClient.attributes;
 const IdClient: SplitAPI.IdentityClient = apiClient.identities;
 
-const myAttr: SplitAPI.IAttribute = new entities.Attribute('id');
-const myAttr2: SplitAPI.IAttribute = new entities.Attribute('id2', 'orgId', 'ttId', 'dispName', 'STRING', 'desc', false);
+/******* Entity classes *******/
 
-const myTT: SplitAPI.ITrafficType = new entities.TrafficType('id', 'name');
-const myTT2: SplitAPI.ITrafficType = new entities.TrafficType('id', 'name', 'dispAttrId');
+const myAttr: entities.Attribute = new entities.Attribute({ trafficTypeId: 'id' });
+const myAttr2: entities.Attribute = new entities.Attribute({
+  id: 'id2', 
+  organizationId: 'orgId', 
+  trafficTypeId: 'ttId', 
+  displayName: 'dispName', 
+  dataType: 'STRING', 
+  description: 'desc', 
+  isSearchable: false
+});
 
-// All params are required
-const myEnv: entities.Environment = new entities.Environment('id', 'name'); 
+const myTT: entities.TrafficType = new entities.TrafficType({id: 'id',  name: 'name'});
+const myTT2: entities.TrafficType = new entities.TrafficType({id: 'id', name: 'name', displayAttributeId: 'dispAttrId'});
 
-const myIdentity: entities.Identity = new entities.Identity('key', {val1: 'val1'});
-const myIdentity2: entities.Identity = new entities.Identity('key', {val1: 'val1'}, 'envId', 'ttId', 'orgId');
+// Only one possible combination
+const myEnv: entities.Environment = new entities.Environment({id: 'id',  name: 'name'}); 
 
+const myIdentity = new entities.Identity({
+  key: 'key',
+  trafficTypeId: 'ttId',
+  environmentId: 'envId'
+});
+const myIdentity2: entities.Identity = new entities.Identity({
+  key: 'key', 
+  values: {val1: 'val1'},
+  environmentId: 'envId', 
+  trafficTypeId: 'ttId', 
+  organizationId: 'orgId',
+  timestamp: 124124
+});
+
+/******* DTO Interfaces *******/
 const trafficType: SplitAPI.ITrafficType = {
   id: 'id',
-  name: 'user'
+  name: 'user',
+  displayAttributeId: 'dispAttrId'
 };
 
 const environment: SplitAPI.IEnvironment = {
@@ -49,7 +82,8 @@ const attribute: SplitAPI.IAttribute = {
   trafficTypeId: 'ttId',
   displayName: 'dn',
   dataType: 'string',
-  description: 'something'
+  description: 'something',
+  isSearchable: true
 };
 
 const identity: SplitAPI.IIdentity = {
@@ -60,35 +94,58 @@ const identity: SplitAPI.IIdentity = {
   values: {
     name: 'john',
     lname: 'bonachon'
-  }
+  },
+  timestamp: 124124
 };
 
-const trafficTypes = TTClient.list().then((res: any) => {
-  const data = res.body;
-});
-const environments = EnvClient.list().then((res: any) => {
-  const data = res.body;
-});
-
-const createAttribute = AttrClient.create(attribute).then((res: any) => {
-  const data = res.body;
-});
-const deleteAttribute = AttrClient.delete(attribute).then((res: any) => {
-  const data = res.body;
-});
-const attributesOfttId = AttrClient.list('ttId').then((res: any) => {
-  const data = res.body;
+/******* Client methods *******/
+const trafficTypesPromise = TTClient.list().then((res) => {
+  const TT: entities.TrafficType = res[0];
+  return TT;
 });
 
-const newIdentity = IdClient.save(identity).then((res: any) => {
-  const data = res.body;
+const environmentsPromise = EnvClient.list().then((res) => {
+  const env: entities.Environment = res[0];
 });
-const newIdentities = IdClient.saveBulk([identity]).then((res: any) => {
-  const data = res.body;
+
+const createAttribute = AttrClient.create(attribute).then((res) => {
+  const attr: entities.Attribute = res;
 });
-const updatedIdentity = IdClient.update(identity).then((res: any) => {
-  const data = res.body;
+const deleteAttribute = AttrClient.delete(attribute).then((res) => {
+  const deleted: boolean = res;
 });
-const deletedIdentity = IdClient.delete(identity).then((res: any) => {
-  const data = res.body;
+const attributesOfttId = AttrClient.list('ttId').then((res) => {
+  const attr: entities.Attribute = res[0];
+});
+
+const newIdentity = IdClient.save(identity).then((res) => {
+  const ident: entities.Identity = res;
+});
+const newIdentities = IdClient.saveBulk([identity]).then((res) => {
+  const ident: entities.Identity | SplitAPI.UnsavedItem = res[0]; 
+});
+const updatedIdentity = IdClient.update(identity).then((res) => {
+  const ident: entities.Identity = res;
+});
+const deletedIdentity = IdClient.delete(identity).then((res) => {
+  const deleted: boolean = res;
+});
+
+const apiResponse: SplitAPI.ApiResponse<boolean> = new Promise<boolean>((res, rej) => {
+  res(true);
+});
+
+const apiResponseList: SplitAPI.ApiResponseList<boolean> = new Promise<boolean[]>((res, rej) => {
+  res([true]);
+});
+
+const apiResponseBulk: SplitAPI.ApiResponseBulk<boolean> = new Promise<(boolean | SplitAPI.UnsavedItem)[]>((res, rej) => {
+  res([true]);
+});
+const apiResponseBulk2: SplitAPI.ApiResponseBulk<boolean> = new Promise<(boolean | SplitAPI.UnsavedItem)[]>((res, rej) => {
+  const unsavedItem: SplitAPI.UnsavedItem = {
+    data: {},
+    err: new Error()
+  }
+  res([unsavedItem]);
 });
