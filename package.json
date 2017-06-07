@@ -16,7 +16,7 @@
     "build-ts": "tsc",
     "start": "node ./lib/index.js",
     "debug": "node --debug-brk ./lib/index.js",
-    "pretest-ts-decls": "npm run build && npm link",
+    "pretest-ts-decls": "npm run build:prod && npm link",
     "test-ts-decls": "./scripts/ts-tests.sh",
     "posttest-ts-decls": "npm unlink",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
