@@ -6,7 +6,7 @@ export default class IdentityClient {
    * Saves an identity. It will return a promise resolving to the reason
    * if an error occurs, or an Identity otherwise.
    */
-  save(identity: IIdentity) {
+  save(identity: IIdentity): Promise<Identity> {
     try {
       const ident = new Identity(identity);
       return gateway.put(
@@ -16,7 +16,7 @@ export default class IdentityClient {
         return new Identity(<any> res);
       });
     } catch (err) {
-      return gateway.rejectedReq(err);
+      return <any> gateway.rejectedReq(err);
     }
   };
   /**
@@ -85,7 +85,7 @@ export default class IdentityClient {
    * Update an identity. It will return a promise resolving to the reason
    * if an error occurs, or an Identity otherwise.
    */
-  update(identity: IIdentity) {
+  update(identity: IIdentity): Promise<Identity> {
     try {
       const ident = new Identity(identity);
       return gateway.patch(
@@ -95,19 +95,19 @@ export default class IdentityClient {
         return new Identity(<any> res);
       });
     } catch (err) {
-      return gateway.rejectedReq(err);
+      return <any> gateway.rejectedReq(err);
     }
   };
   /**
    * Delete an identity. It will return a promise resolving to the reason
    * if an error occurs, or a boolean otherwise.
    */
-  delete(identity: IIdentity) {
+  delete(identity: IIdentity): Promise<boolean> {
     try {
       const ident = new Identity(identity);
       return gateway.del(`/trafficTypes/${identity.trafficTypeId}/environments/${identity.environmentId}/identities/${identity.key}`);
     } catch (err) {
-      return gateway.rejectedReq(err);
+      return <any> gateway.rejectedReq(err);
     }
   };
 }

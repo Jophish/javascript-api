@@ -5,37 +5,37 @@ export default class AttributeClient {
   /**
    * Lists all attributes of a given traffic type
    */
-  list(ttId: string): Promise<Attribute[]> | Promise<Error> {
+  list(ttId: string): Promise<Attribute[]> {
     if (typeof ttId === 'string') {
       return gateway.get(`/trafficTypes/${ttId}/schema`).then((res: any) => {
         return res.objects.map(e => new Attribute(e));
       });
     } else {
-      return gateway.rejectedReq(new Error('You need to provide a Traffic Type ID to get a list of attributes.'));
+      return <any> gateway.rejectedReq(new Error('You need to provide a Traffic Type ID to get a list of attributes.'));
     }
   };
   /**
    * Creates an attribute
    */
-  create(attribute: IAttribute) {
+  create(attribute: IAttribute): Promise<Attribute> {
     try {
       const attr = new Attribute(attribute);
       return gateway.put(attr, `/trafficTypes/${attr.trafficTypeId}/schema`).then((res) => {
         return new Attribute(<any> res);
       });     
     } catch (err) {
-      return gateway.rejectedReq(err);
+      return <any> gateway.rejectedReq(err);
     }
   }
   /**
    * Deletes an attribute
    */
-  delete(attribute: IAttribute): Promise<boolean> | Promise<Error> {
+  delete(attribute: IAttribute): Promise<boolean> {
     try {
       const attr = new Attribute(attribute);
       return gateway.del(`/trafficTypes/${attr.trafficTypeId}/schema/${attr.id}`);     
     } catch (err) {
-      return gateway.rejectedReq(err);
+      return <any> gateway.rejectedReq(err);
     }
   }
 }
