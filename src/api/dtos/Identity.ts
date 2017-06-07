@@ -2,7 +2,7 @@ export interface IIdentity {
   key: string;
   environmentId: string;
   trafficTypeId: string;
-  values: {
+  values?: {
     [key: string]: string
   };
   organizationId?: string;
