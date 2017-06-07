@@ -45,33 +45,33 @@ class Gateway {
     Object.assign(this._settings, config);
   }
 
-  get(path: string): Promise<SA.Response> {
+  get(path: string) {
     const req = SA.get(this.resolveUrl(path));
 
     return this.executeRequest(req);
   }
 
-  del(path: string): Promise<SA.Response> {
+  del(path: string){
     const req = SA.delete(this.resolveUrl(path));
 
     return this.executeRequest(req);
   }
 
-  post(data: Object, path: string): Promise<SA.Response> {
+  post(data: Object, path: string){
     const req = SA.post(this.resolveUrl(path))
       .send(data);
 
     return this.executeRequest(req);
   }
 
-  put(data: Object, path: string): Promise<SA.Response> {
+  put(data: Object, path: string) {
     const req = SA.put(this.resolveUrl(path))
       .send(data);
 
     return this.executeRequest(req);
   }
 
-  patch(data: Object, path: string): Promise<SA.Response> {
+  patch(data: Object, path: string){
     const req = SA.patch(this.resolveUrl(path))
       .send(data);
 
@@ -84,7 +84,7 @@ class Gateway {
     });
   }
 
-  private executeRequest(req: SA.SuperAgentRequest): Promise<SA.Response> {
+  private executeRequest(req: SA.SuperAgentRequest): Promise<any> {
     req.agent(this._agent)
       .set('Authorization', this._authToken)
       .set('SplitSDKVersion', apiVersion)
