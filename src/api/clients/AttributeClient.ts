@@ -1,17 +1,17 @@
-import gateway from '../http/gateway';
+import Client from './Client';
 import Attribute, { IAttribute } from '../dtos/Attribute';
 
-export default class AttributeClient {
+export default class AttributeClient extends Client {
   /**
    * Lists all attributes of a given traffic type
    */
   list(ttId: string): Promise<Attribute[]> {
     if (typeof ttId === 'string') {
-      return gateway.get(`/trafficTypes/${ttId}/schema`).then((res: any) => {
+      return this.gateway.get(`/trafficTypes/${ttId}/schema`).then((res: any) => {
         return res.map(e => new Attribute(e));
       });
     } else {
-      return <any> gateway.rejectedReq(new Error('You need to provide a Traffic Type ID to get a list of attributes.'));
+      return <any> this.gateway.rejectedReq(new Error('You need to provide a Traffic Type ID to get a list of attributes.'));
     }
   };
   /**
@@ -20,11 +20,11 @@ export default class AttributeClient {
   create(attribute: IAttribute): Promise<Attribute> {
     try {
       const attr = new Attribute(attribute);
-      return gateway.put(attr, `/trafficTypes/${attr.trafficTypeId}/schema`).then((res) => {
+      return this.gateway.put(attr, `/trafficTypes/${attr.trafficTypeId}/schema`).then((res) => {
         return new Attribute(<any> res);
-      });     
+      });
     } catch (err) {
-      return <any> gateway.rejectedReq(err);
+      return <any> this.gateway.rejectedReq(err);
     }
   }
   /**
@@ -33,9 +33,9 @@ export default class AttributeClient {
   delete(attribute: IAttribute): Promise<boolean> {
     try {
       const attr = new Attribute(attribute);
-      return gateway.del(`/trafficTypes/${attr.trafficTypeId}/schema/${attr.id}`);     
+      return this.gateway.del(`/trafficTypes/${attr.trafficTypeId}/schema/${attr.id}`);
     } catch (err) {
-      return <any> gateway.rejectedReq(err);
+      return <any> this.gateway.rejectedReq(err);
     }
   }
 }
