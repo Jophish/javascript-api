@@ -4,7 +4,7 @@ import Gateway from './http/gateway';
 import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient } from './clients';
 import * as DTOS from './dtos';
 
-export default class ApiClient {
+class ApiClient {
   private gateway: Gateway;
 
   readonly config: IApiConfig;
@@ -23,6 +23,8 @@ export default class ApiClient {
   }
 }
 
-export interface IApiConfig extends IApiConfig {}
-
-export const entities = DTOS;
+export { 
+  ApiClient as client,
+  IApiConfig,
+  DTOS as entities
+};

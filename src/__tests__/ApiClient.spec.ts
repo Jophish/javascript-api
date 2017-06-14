@@ -1,25 +1,25 @@
-import ApiClient, { entities } from '../ApiClient';
+import { client, entities } from '../ApiClient';
 import * as DTOS from '../dtos';
 
 import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient } from '../clients';
 
 test('API clients should expose all the available clients', () => {
-  const client = new ApiClient('apiKey');
+  const apiClient = new client('apiKey');
 
-  expect(client.trafficTypes).toBeInstanceOf(TrafficTypeClient);
-  expect(client.environments).toBeInstanceOf(EnvironmentClient);
-  expect(client.attributes).toBeInstanceOf(AttributeClient);
-  expect(client.identities).toBeInstanceOf(IdentityClient);
+  expect(apiClient.trafficTypes).toBeInstanceOf(TrafficTypeClient);
+  expect(apiClient.environments).toBeInstanceOf(EnvironmentClient);
+  expect(apiClient.attributes).toBeInstanceOf(AttributeClient);
+  expect(apiClient.identities).toBeInstanceOf(IdentityClient);
 });
 
 test('API clients should support the definiton of a configuration object', () => {
-  const apiClient = new ApiClient('apiKey', {
+  const apiClient = new client('apiKey', {
     endpoint: 'end',
     debugEnabled: true,
     connectionTimeout: 2000
   });
 
-  expect(apiClient).toBeInstanceOf(ApiClient);
+  expect(apiClient).toBeInstanceOf(client);
 });
 
 test('entities should expose the DTO constructors', () => {
