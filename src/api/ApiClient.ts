@@ -26,4 +26,3 @@ export default class ApiClient {
 export interface IApiConfig extends IApiConfig {}
 
 export const entities = DTOS;
-
