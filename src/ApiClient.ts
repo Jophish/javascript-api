@@ -4,7 +4,7 @@ import Gateway from './http/gateway';
 import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient } from './clients';
 import * as DTOS from './dtos';
 
-export default class ApiClient {
+class ApiClient {
   private gateway: Gateway;
 
   readonly config: IApiConfig;
@@ -23,6 +23,16 @@ export default class ApiClient {
   }
 }
 
-export interface IApiConfig extends IApiConfig {}
+function client(apiKey: string, config?: IApiConfig) {
+  if (typeof apiKey !== 'string') {
+    throw new Error('You need to specify an Admin key.');
+  } else {
+    return new ApiClient(apiKey, config);
+  }
+}
 
-export const entities = DTOS;
+export { 
+  client,
+  IApiConfig,
+  DTOS as entities
+};

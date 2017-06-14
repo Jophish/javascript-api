@@ -11,8 +11,6 @@ import * as debug from 'debug';
 
 import { IApiConfig } from '../config/ApiConfig';
 
-// @TODO remove mixed import / require
-
 // Wrap SA with cache plugin
 require('superagent-cache')(SA);
 
