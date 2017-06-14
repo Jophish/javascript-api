@@ -88,9 +88,9 @@ export default class IdentityClient extends Client {
   update(identity: IIdentity): Promise<Identity> {
     try {
       const ident = new Identity(identity);
-      return this.gateway.patch(
+      return this.gateway.post(
         ident,
-        `/trafficTypes/${ident.trafficTypeId}/environments/${ident.environmentId}/identities/${ident.key}`
+        `/trafficTypes/${ident.trafficTypeId}/environments/${ident.environmentId}/identities/${ident.key}/patch`
       ).then((res) => {
         return new Identity(<any> res);
       });
