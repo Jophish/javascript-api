@@ -23,8 +23,16 @@ class ApiClient {
   }
 }
 
+function client(apiKey: string, config?: IApiConfig) {
+  if (typeof apiKey !== 'string') {
+    throw new Error('You need to specify an Admin key.');
+  } else {
+    return new ApiClient(apiKey, config);
+  }
+}
+
 export { 
-  ApiClient as client,
+  client,
   IApiConfig,
   DTOS as entities
 };

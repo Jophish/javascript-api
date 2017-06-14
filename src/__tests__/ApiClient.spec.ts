@@ -3,8 +3,17 @@ import * as DTOS from '../dtos';
 
 import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient } from '../clients';
 
+test('Should have a client function, that throws without a string as the first param (Admin Key)', () => {
+  expect(client.bind(null)).toThrow();
+  expect(client.bind(null, undefined)).toThrow();
+  expect(client.bind(null, /something/)).toThrow();
+  expect(client.bind(null, {})).toThrow();
+
+  expect(client.bind(null, 'Fake_admin_key')).not.toThrow();
+});
+
 test('API clients should expose all the available clients', () => {
-  const apiClient = new client('apiKey');
+  const apiClient = client('apiKey');
 
   expect(apiClient.trafficTypes).toBeInstanceOf(TrafficTypeClient);
   expect(apiClient.environments).toBeInstanceOf(EnvironmentClient);
@@ -13,13 +22,14 @@ test('API clients should expose all the available clients', () => {
 });
 
 test('API clients should support the definiton of a configuration object', () => {
-  const apiClient = new client('apiKey', {
+  const fakeConfig = {
     endpoint: 'end',
     debugEnabled: true,
     connectionTimeout: 2000
-  });
+  };
+  const apiClient = client('apiKey', fakeConfig);
 
-  expect(apiClient).toBeInstanceOf(client);
+  expect(apiClient.config).toMatchObject(fakeConfig);
 });
 
 test('entities should expose the DTO constructors', () => {
