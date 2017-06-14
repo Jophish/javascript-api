@@ -3,7 +3,7 @@ import * as debug from 'debug';
 const {
   version: apiVersion,
   specVersion
-} = require('../../../package.json');
+} = require('../../package.json');
 
 export interface IApiConfig {
   endpoint?: string,

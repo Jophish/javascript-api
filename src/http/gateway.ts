@@ -22,7 +22,7 @@ const machineName = getMachineName();
 const {
   version: apiVersion,
   specVersion
-} = require('../../../package.json');
+} = require('../../package.json');
 
 // module variables
 const MAX_SOCKETS = 20;
