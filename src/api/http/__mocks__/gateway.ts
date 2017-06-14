@@ -5,19 +5,19 @@ const MOCKS = {
     '/environments': require('./jsons/environments.get'),
     '/trafficTypes': require('./jsons/trafficTypes.get'),
     '/trafficTypes/user/schema': require('./jsons/attrsByTT.user.get'),
-    '/trafficTypes/machine/schema': require('./jsons/attrsByTT.machine.get')    
+    '/trafficTypes/machine/schema': require('./jsons/attrsByTT.machine.get')
   },
   POST: {
     '/trafficTypes/userTT/environments/STG/identities': require('./jsons/identitiesSave.user.stg.post'),
-    '/trafficTypes/machineTT/environments/STG/identities': require('./jsons/identitiesSave.machine.stg.post')     
+    '/trafficTypes/machineTT/environments/STG/identities': require('./jsons/identitiesSave.machine.stg.post')
   },
   PUT: {
     '/trafficTypes/userTT/schema': require('./jsons/attrsCreate.user.put'),
-    '/trafficTypes/machineTT/schema': require('./jsons/attrsCreate.machine.put'), 
+    '/trafficTypes/machineTT/schema': require('./jsons/attrsCreate.machine.put'),
     '/trafficTypes/userTT/environments/STG/identities/NicoZelaya': require('./jsons/identitySave.user.stg.nicozelaya.put')
   },
   PATCH: {
-    '/trafficTypes/userTT/environments/STG/identities/NicoZelaya': require('./jsons/identityUpdate.user.stg.nicozelaya.patch'),    
+    '/trafficTypes/userTT/environments/STG/identities/NicoZelaya': require('./jsons/identityUpdate.user.stg.nicozelaya.patch'),
   },
   DELETE: { // Apparently the deletes return boolean values
     '/trafficTypes/userTT/schema/lname': true,
@@ -75,6 +75,4 @@ class MockGateway {
   }
 }
 
-const mockedGateway = new MockGateway();
-
-export default mockedGateway;
+export default MockGateway;

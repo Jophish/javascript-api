@@ -1,12 +1,12 @@
-import gateway from '../http/gateway';
+import Client from './Client';
 import TrafficType, { ITrafficType } from '../dtos/TrafficType';
 
-export default class TrafficTypeClient {
+export default class TrafficTypeClient extends Client {
   /**
    * Lists all traffic types
    */
   list(): Promise<TrafficType[]> {
-    return gateway.get('/trafficTypes').then((res: any) => {
+    return this.gateway.get('/trafficTypes').then((res: any) => {
       return res.map(e => new TrafficType(e));
     });
   };

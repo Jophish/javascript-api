@@ -1,13 +1,18 @@
 jest.mock('../../http/gateway');
 
+import Gateway from '../../http/gateway';
 import AttributeClient from '../AttributeClient';
+
+function createClient() {
+  return new AttributeClient(new Gateway('testing'));
+}
 
 test('should be a class (function)', () => {
   expect(typeof AttributeClient).toBe('function');
 });
 
 test('instances should expose an API', () => {
-  const attribute = new AttributeClient();
+  const attribute = createClient();
 
   expect(attribute.list).toBeDefined();
   expect(attribute.create).toBeDefined();
@@ -15,20 +20,20 @@ test('instances should expose an API', () => {
 });
 
 test('it should return a rejected promise if you try to list attributes without providing a traffic type id', () => {
-  const attribute: any = new AttributeClient();
-  
+  const attribute: any = createClient();
+
   attribute.list()
            .then(res => expect(res).toBe('this should never happen'))
            .catch(err => expect(err.message).toContain('You need to provide a Traffic Type ID'));
 });
 
 test('it should be able to list the attributes given a traffic type id, returning a promise', () => {
-  const attribute = new AttributeClient();
+  const attribute = createClient();
   const listPromise = <Promise<any>> attribute.list('user');
-  const listPromise2 = <Promise<any>> attribute.list('machine');  
+  const listPromise2 = <Promise<any>> attribute.list('machine');
 
   expect(listPromise.then).toBeDefined();
-  expect(typeof listPromise.then).toBe('function');  
+  expect(typeof listPromise.then).toBe('function');
 
   listPromise.then((res) => {
     expect(res).toMatchSnapshot();
@@ -41,8 +46,8 @@ test('it should be able to list the attributes given a traffic type id, returnin
 });
 
 test('it should return a rejected promise if you try to create an attribute without providing one', () => {
-  const attribute: any = new AttributeClient();
-  
+  const attribute: any = createClient();
+
   attribute.create()
            .then(res => expect(res).toBe('this should never happen'))
            .catch(err => expect(err.message).toContain('an object with at least trafficTypeId'));
@@ -55,7 +60,7 @@ test('it should return a rejected promise if you try to create an attribute with
 });
 
 test('it should be able to create an attribute, returning a promise', () => {
-  const attribute = new AttributeClient();
+  const attribute = createClient();
   const createPromise = <Promise<any>> attribute.create({
     id: 'test1',
     organizationId: 'SplitTesting',
@@ -67,10 +72,10 @@ test('it should be able to create an attribute, returning a promise', () => {
     organizationId: 'SplitTesting',
     trafficTypeId: 'machineTT',
     displayName: 'Test 2'
-  });  
+  });
 
   expect(createPromise.then).toBeDefined();
-  expect(typeof createPromise.then).toBe('function');  
+  expect(typeof createPromise.then).toBe('function');
 
   createPromise.then((res) => {
     expect(res).toMatchSnapshot();
@@ -83,8 +88,8 @@ test('it should be able to create an attribute, returning a promise', () => {
 });
 
 test('it should return a rejected promise if you try to delete an attribute without providing one', () => {
-  const attribute: any = new AttributeClient();
-  
+  const attribute: any = createClient();
+
   attribute.delete()
            .then(res => expect(res).toBe('this should never happen'))
            .catch(err => expect(err.message).toContain('an object with at least trafficTypeId'));
@@ -97,7 +102,7 @@ test('it should return a rejected promise if you try to delete an attribute with
 });
 
 test('it should be able to delete an attribute, returning a promise', () => {
-  const attribute = new AttributeClient();
+  const attribute = createClient();
   const deletePromise = <Promise<any>> attribute.delete({
     id: 'lname',
     organizationId: 'SplitTesting',
@@ -112,10 +117,10 @@ test('it should be able to delete an attribute, returning a promise', () => {
     id: 'ip',
     organizationId: 'SplitTesting',
     dataType: 'STRING'
-  }); 
+  });
 
   expect(deletePromise.then).toBeDefined();
-  expect(typeof deletePromise.then).toBe('function');  
+  expect(typeof deletePromise.then).toBe('function');
 
   deletePromise.then((res) => {
     expect(res).toMatchSnapshot();

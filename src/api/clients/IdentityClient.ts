@@ -1,7 +1,7 @@
-import gateway, { Response } from '../http/gateway';
+import Client from './Client';
 import Identity, { IIdentity } from '../dtos/Identity';
 
-export default class IdentityClient {
+export default class IdentityClient extends Client {
   /**
    * Saves an identity. It will return a promise resolving to the reason
    * if an error occurs, or an Identity otherwise.
@@ -9,14 +9,14 @@ export default class IdentityClient {
   save(identity: IIdentity): Promise<Identity> {
     try {
       const ident = new Identity(identity);
-      return gateway.put(
-        ident, 
+      return this.gateway.put(
+        ident,
         `/trafficTypes/${ident.trafficTypeId}/environments/${ident.environmentId}/identities/${ident.key}`
       ).then((res) => {
         return new Identity(<any> res);
       });
     } catch (err) {
-      return <any> gateway.rejectedReq(err);
+      return <any> this.gateway.rejectedReq(err);
     }
   };
   /**
@@ -51,7 +51,7 @@ export default class IdentityClient {
           err
         };
       }
-      
+
       if (key) { // If we have an Identity-like object
         if (!groups[key]) {
           groups[key] = [i];
@@ -70,8 +70,8 @@ export default class IdentityClient {
       const envId = group[0].environmentId;
 
       promises.push(
-        gateway.post(
-          group, 
+        this.gateway.post(
+          group,
           `/trafficTypes/${ttId}/environments/${envId}/identities`
         ).then((res: any) => {
           return res.objects.map(e => e = new Identity(e));
@@ -88,14 +88,14 @@ export default class IdentityClient {
   update(identity: IIdentity): Promise<Identity> {
     try {
       const ident = new Identity(identity);
-      return gateway.patch(
-        ident, 
+      return this.gateway.patch(
+        ident,
         `/trafficTypes/${ident.trafficTypeId}/environments/${ident.environmentId}/identities/${ident.key}`
       ).then((res) => {
         return new Identity(<any> res);
       });
     } catch (err) {
-      return <any> gateway.rejectedReq(err);
+      return <any> this.gateway.rejectedReq(err);
     }
   };
   /**
@@ -105,9 +105,9 @@ export default class IdentityClient {
   delete(identity: IIdentity): Promise<boolean> {
     try {
       const ident = new Identity(identity);
-      return gateway.del(`/trafficTypes/${identity.trafficTypeId}/environments/${identity.environmentId}/identities/${identity.key}`);
+      return this.gateway.del(`/trafficTypes/${identity.trafficTypeId}/environments/${identity.environmentId}/identities/${identity.key}`);
     } catch (err) {
-      return <any> gateway.rejectedReq(err);
+      return <any> this.gateway.rejectedReq(err);
     }
   };
 }

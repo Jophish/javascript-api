@@ -11,6 +11,8 @@ import * as debug from 'debug';
 
 import { IApiConfig } from '../config/ApiConfig';
 
+// @TODO remove mixed import / require
+
 // Wrap SA with cache plugin
 require('superagent-cache')(SA);
 
@@ -26,24 +28,23 @@ const {
 const MAX_SOCKETS = 20;
 const log = debug.default('split-api:gateway');
 
-class Gateway {
+export default class Gateway {
   private _authToken: string;
   private _settings: IApiConfig = {};
   private _agent: Agent;
 
-  constructor() {
+  constructor(key: string, config: IApiConfig = {}) {
+    // @TODO we should expose this as configurations even give the change of
+    // reuse an already created agent
     this._agent = new Agent({
       maxSockets: MAX_SOCKETS
     });
-  };
 
-  set adminKey(key: string) {
+    // @TODO move this to a getter and build the header there
     this._authToken = 'Bearer ' + key;
-  }
 
-  set settings(config: IApiConfig) {
     Object.assign(this._settings, config);
-  }
+  };
 
   get(path: string) {
     const req = SA.get(this.resolveUrl(path));
@@ -110,9 +111,5 @@ class Gateway {
 
 }
 
-const gateway = new Gateway();
-
 export interface Response extends SA.Response {};
 export interface Request extends SA.Request {};
-
-export default gateway;

@@ -1,13 +1,13 @@
 import ApiConfig, { IApiConfig } from './config/ApiConfig';
-import gateway from './http/gateway';
+import Gateway from './http/gateway';
 
 import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient } from './clients';
 import * as DTOS from './dtos';
 
 export default class ApiClient {
-  // params
+  private gateway: Gateway;
+
   readonly config: IApiConfig;
-  // Client instances
   readonly trafficTypes: TrafficTypeClient;
   readonly environments: EnvironmentClient;
   readonly attributes: AttributeClient;
@@ -15,15 +15,12 @@ export default class ApiClient {
 
   constructor(private apiKey: string, config?: IApiConfig) {
     this.config = new ApiConfig(config);
-
-    gateway.adminKey = apiKey;
-    gateway.settings = this.config;
-
-    this.trafficTypes = new TrafficTypeClient();
-    this.attributes = new AttributeClient();    
-    this.environments = new EnvironmentClient();
-    this.identities = new IdentityClient();
-  } 
+    this.gateway = new Gateway(apiKey, config);
+    this.trafficTypes = new TrafficTypeClient(this.gateway);
+    this.attributes = new AttributeClient(this.gateway);
+    this.environments = new EnvironmentClient(this.gateway);
+    this.identities = new IdentityClient(this.gateway);
+  }
 }
 
 export interface IApiConfig extends IApiConfig {}
