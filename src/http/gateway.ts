@@ -12,8 +12,7 @@ import * as debug from 'debug';
 import { IApiConfig } from '../config/ApiConfig';
 
 // Wrap SA with cache plugin
-import * as SAC from 'superagent-cache';
-SAC.default(SA);
+require('superagent-cache')(SA);
 
 // request headers metadata
 const machineIp = getIpAddress();
