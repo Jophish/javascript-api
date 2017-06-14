@@ -3,8 +3,8 @@
   "version": "1.0.0-canary.6",
   "specVersion": "1.0",
   "description": "Split API SDK. Interacts with Split API for identifying traffic.",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "lib/api/index.js",
+  "module": "es/api/index.js",
   "types": "types",
   "scripts": {
     "build": "rimraf ./lib ./es && npm run build-ts && npm run babel",

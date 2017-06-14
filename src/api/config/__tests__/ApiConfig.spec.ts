@@ -19,7 +19,7 @@ test('instances should expose an API', () => {
 });
 
 test('should have configurations by default', () => {
-  const config = new ApiConfig();  
+  const config = new ApiConfig();
 
   expect(config.endpoint).toBe(defaultSettings.endpoint);
   expect(config.connectionTimeout).toBe(defaultSettings.connectionTimeout);
@@ -48,5 +48,3 @@ test('should be able to receive partial settings', () => {
   expect(config.connectionTimeout).toBe(defaultSettings.connectionTimeout);
   expect(config.debugEnabled).toBe(defaultSettings.debugEnabled);
 });
-
-
