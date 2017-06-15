@@ -135,11 +135,11 @@ interface IIdentity {
   key: string;
   environmentId: string;
   trafficTypeId: string;
+  organizationId?: string;
+  timestamp?: number;
   values?: {
     [key: string]: string
   };
-  organizationId?: string;
-  timestamp?: number;
 }
 ```
 
