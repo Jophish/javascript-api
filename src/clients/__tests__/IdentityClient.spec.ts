@@ -72,12 +72,17 @@ test('it should be able to save a collection of identities, returning a promise 
   const choculaUser = Object.assign({}, choculaIdent, {
     trafficTypeId: 'userTT'
   });
+
+  const failOnBENico = Object.assign({}, NicoZelayaIdent, {
+    key: 'imagine_this_key_throws'
+  });
+
   const wrongFormatUser = {
     key: 'incorrect_identity',
     trafficTypeId: 'ttId'
   };
   const createBulkPromise = identity.saveBulk([
-    NicoZelayaIdent, choculaIdent, choculaUser, {}, undefined, wrongFormatUser
+    NicoZelayaIdent, choculaIdent, choculaUser, failOnBENico, {}, undefined, wrongFormatUser
   ]);
 
   expect(createBulkPromise.then).toBeDefined();
@@ -85,22 +90,37 @@ test('it should be able to save a collection of identities, returning a promise 
 
   return createBulkPromise.then((res: any) => {
     // We should have two "groups" (combinations of TT & Env)
-    expect(res.length).toBe(5);
-    const emptyObj = res[0];
-    const undef = res[1];
-    const wrongFormat = res[2];
-    const nico = res[3];
-    const chocula = res[4];
+    expect(res.objects.length).toBe(3);
+    expect(res.failed.length).toBe(4);
+    
+    const nico = res.objects[0];
+    const choculaUserTT = res.objects[1];
+    const choculaMachineTT = res.objects[2];    
 
+    const emptyObj = res.failed[0];
+    const undef = res.failed[1];
+    const wrongFormat = res.failed[2];
+    const failedOnBE = res.failed[3];
+    
     // It should sent the data of the received identities
     expect(nico).toMatchSnapshot();
-    expect(chocula).toMatchObject([choculaIdent]);
-    expect(emptyObj.data).toMatchObject({});
-    expect(emptyObj.err.message).toContain('an object with at least key, environmentId and trafficTypeId');
-    expect(undef.data).toBeUndefined();
-    expect(undef.err.message).toContain('an object with at least key, environmentId and trafficTypeId');
-    expect(wrongFormat.data).toMatchObject(wrongFormatUser);
-    expect(wrongFormat.err.message).toContain('an object with at least key, environmentId and trafficTypeId');
+    expect(choculaUserTT).toMatchObject(choculaUser);
+    expect(choculaMachineTT).toMatchObject(choculaIdent);
+
+    expect(emptyObj.object).toMatchObject({});
+    expect(undef.object).toBeUndefined();
+    expect(wrongFormat.object).toMatchObject(wrongFormatUser);    
+    expect(failedOnBE.object).toMatchObject(failOnBENico);        
+    
+    expect(emptyObj.message).toContain('This object is not Identity-like');
+    expect(undef.message).toContain('This object is not Identity-like');
+    expect(wrongFormat.message).toContain('This object is not Identity-like');
+    expect(failedOnBE.message).toContain('Bad request');
+
+    expect(emptyObj.status).toBe(0);
+    expect(undef.status).toBe(0);
+    expect(wrongFormat.status).toBe(0);
+    expect(failedOnBE.status).toBe(400);    
   });
 });
 

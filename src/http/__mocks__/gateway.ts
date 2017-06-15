@@ -9,16 +9,15 @@ const MOCKS = {
   },
   POST: {
     '/trafficTypes/userTT/environments/STG/identities': require('./jsons/identitiesSave.user.stg.post'),
-    '/trafficTypes/machineTT/environments/STG/identities': require('./jsons/identitiesSave.machine.stg.post')
+    '/trafficTypes/machineTT/environments/STG/identities': require('./jsons/identitiesSave.machine.stg.post'),
+    '/trafficTypes/userTT/environments/STG/identities/NicoZelaya/patch': require('./jsons/identityUpdate.user.stg.nicozelaya.patch')    
   },
   PUT: {
     '/trafficTypes/userTT/schema': require('./jsons/attrsCreate.user.put'),
     '/trafficTypes/machineTT/schema': require('./jsons/attrsCreate.machine.put'),
     '/trafficTypes/userTT/environments/STG/identities/NicoZelaya': require('./jsons/identitySave.user.stg.nicozelaya.put')
   },
-  PATCH: {
-    '/trafficTypes/userTT/environments/STG/identities/NicoZelaya': require('./jsons/identityUpdate.user.stg.nicozelaya.patch'),
-  },
+  PATCH: {},
   DELETE: { // Apparently the deletes return boolean values
     '/trafficTypes/userTT/schema/lname': true,
     '/trafficTypes/machineTT/schema/ip': true,

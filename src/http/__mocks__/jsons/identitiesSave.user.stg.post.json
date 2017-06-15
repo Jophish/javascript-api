@@ -11,8 +11,35 @@
       "trafficTypeId": "userTT",
       "organizationId": "SplitTesting",
       "timestamp": 1496105118658
+    },
+    {
+      "values": {
+        "username": "Chocula666",
+        "email": "countchocula@vampires.ts",
+        "dob": "24/07/1710"
+      },
+      "key": "Chocula666",
+      "environmentId": "STG",
+      "trafficTypeId": "userTT",
+      "organizationId": "SplitTesting",
+      "timestamp": 1496105118659
     }
   ],
-  "failed": [],
+  "failed": [
+    {
+      "object": {
+        "environmentId": "STG",
+        "key": "imagine_this_key_throws",
+        "trafficTypeId": "userTT",
+        "values": {
+          "username": "NicoZelaya",
+          "email": "nico@gmail.com",
+          "dob": "02/08/1989"
+        }
+      },
+      "status": 400,
+      "message": "Bad request"
+    }
+  ],
   "metadata": {}
 }

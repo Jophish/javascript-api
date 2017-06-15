@@ -16,18 +16,16 @@ Identity {
 `;
 
 exports[`it should be able to save a collection of identities, returning a promise resolving to the results 1`] = `
-Array [
-  Identity {
-    "environmentId": "STG",
-    "key": "NicoZelaya",
-    "organizationId": "SplitTesting",
-    "timestamp": 1496105118658,
-    "trafficTypeId": "userTT",
-    "values": Object {
-      "dob": "02/08/1989",
-      "email": "nico@gmail.com",
-      "username": "NicoZelaya",
-    },
+Identity {
+  "environmentId": "STG",
+  "key": "NicoZelaya",
+  "organizationId": "SplitTesting",
+  "timestamp": 1496105118658,
+  "trafficTypeId": "userTT",
+  "values": Object {
+    "dob": "02/08/1989",
+    "email": "nico@gmail.com",
+    "username": "NicoZelaya",
   },
-]
+}
 `;

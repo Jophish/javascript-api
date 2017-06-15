@@ -1,5 +1,7 @@
 import Client from './Client';
 import Identity, { IIdentity } from '../dtos/Identity';
+import ResultDTO from '../dtos/result/ResultDTO';
+import FailureDTO from '../dtos/result/FailureDTO';
 
 export default class IdentityClient extends Client {
   /**
@@ -20,22 +22,20 @@ export default class IdentityClient extends Client {
     }
   };
   /**
-   * Save a list of identities. It will return a promise resolving to the array
-   * of the results of saving each identity. Each position will have an Identity
-   * object, or an object with two properties if an error has occured: {
-   *   data: { the identity object that caused the error },
-   *   err: 'the error message'
-   * }.
+   * Save a list of identities. It will return a promise resolving an object containing the results, of the form:
+   *    {
+   *      objects: // The list of identities that could been saved
+   *      failed: // The list of failed results, containing the status (0 for non-identity objects), the object that failed, and a message
+   *      metadata: // Metadata of the operation
+   *    }
    * NOTE: Entities error results would be at the beginning of the resulting array
    */
-  saveBulk(identities: Array<IIdentity>): Promise<Array<Identity | {
-    data: string,
-    err: Error
-  }>> {
+  saveBulk(identities: Array<IIdentity>): Promise<ResultDTO<Identity>> {
     let groups: {
       [groupName: string]: Array<IIdentity>
     } = {};
-    let promises: Array<Promise<Identity>> = [];
+    let promises: Promise<ResultDTO<Identity>>[] = [];
+    const result = new ResultDTO<Identity>();
 
     // Group the identities
     identities.forEach((i) => {
@@ -46,40 +46,49 @@ export default class IdentityClient extends Client {
         ident = new Identity(i);
         key = `${i.trafficTypeId}+${i.environmentId}`;
       } catch (err) {
-        ident = {
-          data: i,
-          err
-        };
+        ident = i;
+        key = 'incorrect_format';
       }
 
-      if (key) { // If we have an Identity-like object
-        if (!groups[key]) {
-          groups[key] = [i];
-        } else {
-          groups[key].push(i);
-        }
-      } else { // If we don't have a the necessary data.
-        promises.push(ident);
+      if (!groups[key]) {
+        groups[key] = [i];
+      } else {
+        groups[key].push(i);
       }
     });
     // Save each group and keep promise reference.
     for (var key in groups) {
       let group = groups[key];
 
-      const ttId = group[0].trafficTypeId;
-      const envId = group[0].environmentId;
+      if (key !== 'incorrect_format') {
+        const ttId = group[0].trafficTypeId;
+        const envId = group[0].environmentId;
 
-      promises.push(
-        this.gateway.post(
-          group,
-          `/trafficTypes/${ttId}/environments/${envId}/identities`
-        ).then((res: any) => {
-          return res.objects.map(e => e = new Identity(e));
-        })
-      );
+        promises.push(
+          this.gateway.post(
+            group,
+            `/trafficTypes/${ttId}/environments/${envId}/identities`
+          ).then((res: ResultDTO<IIdentity>) => {
+            const saved = res.objects.map(e => new Identity(e));
+            const failed = res.failed.map(e => new FailureDTO<any>(e.object, e.status, e.message));
+
+            Array.prototype.push.apply(result.objects, saved);
+            Array.prototype.push.apply(result.failed, failed);
+
+            return res;
+          })
+        );
+      } else {
+        const failed = group.map(e => {
+          return new FailureDTO<any>(e, 0, 'This object is not Identity-like, try using our public entities.');
+        });
+        Array.prototype.push.apply(result.failed, failed);
+      }
     }
 
-    return Promise.all(promises);
+    return Promise.all(promises).then((res) => {
+      return result;
+    });
   };
   /**
    * Update an identity. It will return a promise resolving to the reason
