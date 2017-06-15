@@ -13,12 +13,12 @@ var ApiClient = new SplitAPI.client('your_admin_key', {
 });
 
 // Or you can just call the function.
-var ApiClient = new SplitAPI.client('your_admin_key', {
+var ApiClient = SplitAPI.client('your_admin_key', {
   // Your settings
 });
 ```
 
-**In order to show just what you need of every example, all following code snippets are considered to start with these lines:**
+**In order to show just what you need on every example, all the following code snippets are considered to start with these lines:**
 ```JavaScript
 var SplitAPI = require('@splitsoftware/splitio-api');
 
@@ -36,7 +36,7 @@ interface IEnvironment {
 }
 ```
 
-We provide with a Environment class for you tu use under `SplitAPI.entities.Environment`. _Remember that classes are instantiated using the new keyword._
+We provide an Environment class under `SplitAPI.entities.Environment`. _Remember that classes are instantiated using the new keyword._
 
 * An example of Environment instantiation:
 ```JavaScript
@@ -66,7 +66,7 @@ interface ITrafficType {
 }
 ```
 
-We provide with a TrafficType class for you tu use under `SplitAPI.entities.TrafficType`. _Remember that classes are instantiated using the new keyword._
+We provide a TrafficType class under `SplitAPI.entities.TrafficType`. _Remember that classes are instantiated using the new keyword._
 
 * An example of TrafficType instantiation:
 ```JavaScript
@@ -98,7 +98,7 @@ interface IAttribute {
 }
 ```
 
-We provide with an Attribute class for you tu use under `SplitAPI.entities.Attribute`. _Remember that classes are instantiated using the new keyword._
+We provide an Attribute class under `SplitAPI.entities.Attribute`. _Remember that classes are instantiated using the new keyword._
 
 * An example of attribute instantiation, which will be reused on the other attribute examples:
 ```JavaScript
@@ -143,7 +143,7 @@ interface IIdentity {
 }
 ```
 
-We provide with an Identity class for you tu use under `SplitAPI.entities.Identity`. _Remember that classes are instantiated using the new keyword._
+We provide an Identity class under `SplitAPI.entities.Identity`. _Remember that classes are instantiated using the new keyword._
 
 * An example of identity instantiation, which will be reused on the other identity examples:
 ```JavaScript
