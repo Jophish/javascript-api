@@ -72,8 +72,8 @@ export default class IdentityClient extends Client {
             const saved = res.objects.map(e => new Identity(e));
             const failed = res.failed.map(e => new FailureDTO<any>(e.object, e.status, e.message));
 
-            Array.prototype.push.apply(result.objects, saved);
-            Array.prototype.push.apply(result.failed, failed);
+            result.objects.push(...saved);
+            result.failed.push(...failed);
 
             return res;
           })
