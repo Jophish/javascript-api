@@ -49,7 +49,7 @@ apiClient.attributes.create(attrObject).then(function (res) {
 As there is still no standard for delivering the two builds, we included the `module` key of our package.json ([following this proposal](https://github.com/rollup/rollup/wiki/pkg.module))
 pointing to the files under `/es` folder, which is the build with ES modules. 
 
-* If you are using a tool like [Rollup](https://rollupjs.org/) or [Webpack](https://webpack.js.org/), which looks on package.json for the       `module` key, you should be fine.
+* If you are using a tool like [Rollup](https://rollupjs.org/) or [Webpack](https://webpack.js.org/), which looks on package.json for the `module` key, you should be fine.
 * If you can't point to the `module` key of package.json, you can import `/es/` folder directly  
   `import { client, entities } from '@splitsoftware/splitio-api/es'`
 
