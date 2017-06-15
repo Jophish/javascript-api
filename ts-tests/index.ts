@@ -122,7 +122,8 @@ const newIdentity = IdClient.save(identity).then((res) => {
   const ident: entities.Identity = res;
 });
 const newIdentities = IdClient.saveBulk([identity]).then((res) => {
-  const ident: entities.Identity | SplitAPI.UnsavedItem = res[0]; 
+  const ident: entities.Identity = res.objects[0]; 
+  const failed: SplitAPI.FailureDTO<entities.Identity> = res.failed[0];  
 });
 const updatedIdentity = IdClient.update(identity).then((res) => {
   const ident: entities.Identity = res;
@@ -131,6 +132,7 @@ const deletedIdentity = IdClient.delete(identity).then((res) => {
   const deleted: boolean = res;
 });
 
+/******* Response custom types *******/
 const apiResponse: SplitAPI.ApiResponse<boolean> = new Promise<boolean>((res, rej) => {
   res(true);
 });
@@ -139,13 +141,34 @@ const apiResponseList: SplitAPI.ApiResponseList<boolean> = new Promise<boolean[]
   res([true]);
 });
 
-const apiResponseBulk: SplitAPI.ApiResponseBulk<boolean> = new Promise<(boolean | SplitAPI.UnsavedItem)[]>((res, rej) => {
-  res([true]);
+const apiResponseBulk: SplitAPI.ApiResponseBulk<boolean> = new Promise<SplitAPI.ResultDTO<boolean>>((res, rej) => {
+  const failed: SplitAPI.FailureDTO<boolean> = {
+    object: false,
+    status: 244,
+    message: 'a message'
+  };
+  const resp: SplitAPI.ResultDTO<boolean> = {
+    objects: [true, true, false],
+    failed: [failed],
+    metadata: {
+      meta: 'data'
+    }
+  };
+  res(resp);
 });
-const apiResponseBulk2: SplitAPI.ApiResponseBulk<boolean> = new Promise<(boolean | SplitAPI.UnsavedItem)[]>((res, rej) => {
-  const unsavedItem: SplitAPI.UnsavedItem = {
-    data: {},
-    err: new Error()
-  }
-  res([unsavedItem]);
+
+const apiResponseBulk2: SplitAPI.ApiResponseBulk<entities.Identity> = new Promise<SplitAPI.ResultDTO<entities.Identity>>((res, rej) => {
+  const failed: SplitAPI.FailureDTO<entities.Identity> = {
+    object: <entities.Identity>{},
+    status: 244,
+    message: 'a message'
+  };
+  const resp: SplitAPI.ResultDTO<entities.Identity> = {
+    objects: [<entities.Identity>{}],
+    failed: [failed],
+    metadata: {
+      meta: 'data'
+    }
+  };
+  res(resp);
 });

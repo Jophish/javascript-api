@@ -182,6 +182,32 @@ export namespace entities {
  * @namespace SplitAPI
  */
 declare namespace SplitAPI {
+  /***** Response specific DTO types *****/  
+  /**
+   * @typedef {Object<T>} FailureDTO
+   * @property {T} object - The item that produced the error.
+   * @property {number} status - The status of the response.
+   * @property {string} message - The reason of the failure.
+   */
+  type FailureDTO<T> = {
+    object: T,
+    status: number,
+    message: string
+  }
+
+  /**
+   * @typedef {Object<T>} ResultDTO
+   * @property {Array<T>} objects - The array of succesfully saved items.
+   * @property {Object.<string, string>} metadata - Metadata of the operation.
+   * @property {Array<FailureDTO<T>>} failed - The list of failures.
+   */
+  type ResultDTO<T> = {
+    objects: Array<T>,
+    metadata: { 
+      [key:string]: string 
+    },
+    failed: FailureDTO<T>[]
+  }
   /***** Response types *****/
   /**
    * @typedef {Promise<T>} ApiResponse
@@ -192,20 +218,9 @@ declare namespace SplitAPI {
    */
   type ApiResponseList<T> = Promise<T[]>;
   /**
-   * @typedef {Promise<Array<T | UnsavedItem>>} ApiResponseBulk
+   * @typedef {Promise<{}>>} ApiResponseBulk
    */
-  type ApiResponseBulk<T> = Promise<Array<T | UnsavedItem>>
-
-  /***** Complementary types *****/
-  /**
-   * @typedef {object} UnsavedItem
-   * @property {object} data - The data that we couldn't save.
-   * @property {Error} err - The Error that caused the failure.
-   */
-  type UnsavedItem = {
-    data: object,
-    err: Error
-  };
+  type ApiResponseBulk<T> = Promise<ResultDTO<T>>
 
   /***** Config-related *****/
   /**
