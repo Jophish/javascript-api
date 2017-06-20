@@ -1,0 +1,9 @@
+{
+  "description": "",
+  "displayName": "French name",
+  "trafficTypeId": "userTT",
+  "id": "frname",
+  "organizationId": "SplitTesting",
+  "dataType": "STRING",
+  "isSearchable": false
+}

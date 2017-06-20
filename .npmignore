@@ -1,0 +1,9 @@
+# Coverage reports
+/coverage
+# Unit Tests
+**/__tests__/*.ts
+jestconfig.json
+# Utility scripts
+/scripts
+# TypeScript declarations test
+/ts-tests

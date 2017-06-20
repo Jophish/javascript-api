@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "trafficTypeId": "2",
+    "displayName": "MachineName",
+    "description": "Name of the machine",
+    "dataType": "STRING"
+  },
+  {
+    "id": "2",
+    "trafficTypeId": "2",
+    "displayName": "MachineIP",
+    "description": "IP of the machine",
+    "dataType": "STRING"
+  }
+]

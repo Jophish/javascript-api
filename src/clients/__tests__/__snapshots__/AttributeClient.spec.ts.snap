@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it should be able to create an attribute, returning a promise 1`] = `
+Attribute {
+  "dataType": "STRING",
+  "description": "",
+  "displayName": "French name",
+  "id": "frname",
+  "isSearchable": false,
+  "organizationId": "SplitTesting",
+  "trafficTypeId": "userTT",
+}
+`;
+
+exports[`it should be able to create an attribute, returning a promise 2`] = `
+Attribute {
+  "dataType": "STRING",
+  "description": "Name of the machine running the API",
+  "displayName": "Machine Name",
+  "id": "mname",
+  "isSearchable": false,
+  "organizationId": "SplitTesting",
+  "trafficTypeId": "machineTT",
+}
+`;
+
+exports[`it should be able to delete an attribute, returning a promise 1`] = `true`;
+
+exports[`it should be able to delete an attribute, returning a promise 2`] = `true`;
+
+exports[`it should be able to list the attributes given a traffic type id, returning a promise 1`] = `
+Array [
+  Attribute {
+    "dataType": "STRING",
+    "description": "First name",
+    "displayName": "Name",
+    "id": "1",
+    "isSearchable": undefined,
+    "organizationId": undefined,
+    "trafficTypeId": "1",
+  },
+  Attribute {
+    "dataType": "STRING",
+    "description": "Last name",
+    "displayName": "LName",
+    "id": "2",
+    "isSearchable": undefined,
+    "organizationId": undefined,
+    "trafficTypeId": "1",
+  },
+]
+`;
+
+exports[`it should be able to list the attributes given a traffic type id, returning a promise 2`] = `
+Array [
+  Attribute {
+    "dataType": "STRING",
+    "description": "Name of the machine",
+    "displayName": "MachineName",
+    "id": "1",
+    "isSearchable": undefined,
+    "organizationId": undefined,
+    "trafficTypeId": "2",
+  },
+  Attribute {
+    "dataType": "STRING",
+    "description": "IP of the machine",
+    "displayName": "MachineIP",
+    "id": "2",
+    "isSearchable": undefined,
+    "organizationId": undefined,
+    "trafficTypeId": "2",
+  },
+]
+`;
