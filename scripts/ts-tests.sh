@@ -10,12 +10,12 @@ tsc ## Run typescript compiler. No need for flags as we have a tsconfig.json fil
 
 if [ $? -eq 0 ]
 then
-  echo -e "Successfully compiled TS tests. About to unlink and go back to previous directory.\n"
+  echo -e "✅  Successfully compiled TS tests. About to unlink and go back to previous directory.\n"
   npm unlink @splitsoftware/splitio-api
   cd -
   exit 0
 else
-  echo -e "Error compiling TS tests. About to unlink and go back to previous directory.\n"
+  echo -e "☠️  Error compiling TS tests. About to unlink and go back to previous directory.\n"
   npm unlink @splitsoftware/splitio-api
   cd -
   exit 1
