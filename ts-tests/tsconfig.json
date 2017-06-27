@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es6",
+    "noEmit": true,
+    "moduleResolution": "node",
+    "pretty": true
+  },
+  "files": [
+    "index"
+  ]
+}

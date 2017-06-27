@@ -1,0 +1,12 @@
+{
+  "environmentId": "STG",
+  "key": "NicoZelaya",
+  "organizationId": "SplitTesting",
+  "timestamp": 1496102956729,
+  "trafficTypeId": "userTT",
+  "values": {
+    "username": "NicoZelaya",
+    "email": "nico@gmail.com",
+    "dob": "02/08/1989"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "@splitsoftware/splitio-api",
+  "version": "1.0.0",
+  "specVersion": "1.0",
+  "description": "Split API SDK. Interacts with Split API for identifying traffic.",
+  "main": "lib/ApiClient.js",
+  "module": "es/ApiClient.js",
+  "types": "types",
+  "scripts": {
+    "build": "rimraf ./lib ./es && npm run build-ts && npm run babel",
+    "build:prod": "rimraf ./lib ./es && npm run build-ts && npm run babel:prod",
+    "test": "jest --config ./jestconfig.json",
+    "test:w": "jest --config ./jestconfig.w.json --watch",
+    "babel": "babel ./es --out-dir ./lib --source-maps",
+    "babel:prod": "babel ./es --out-dir ./lib",
+    "build-ts": "tsc",
+    "start": "node ./lib/index.js",
+    "debug": "node --debug-brk ./lib/index.js",
+    "pretest-ts-decls": "npm run build:prod && npm link",
+    "test-ts-decls": "./scripts/ts-tests.sh",
+    "posttest-ts-decls": "npm unlink",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "canary": "npm run build && npm publish --tag canary",
+    "stable": "npm run build:prod && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/splitio/javascript-api.git"
+  },
+  "keywords": [
+    "Split",
+    "SDK",
+    "Identify",
+    "Traffic",
+    "Rollout"
+  ],
+  "author": "Nico Zelaya (nicolas.zelaya@split.io)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/splitio/javascript-api/issues"
+  },
+  "homepage": "https://github.com/splitio/javascript-api#readme",
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "debug": "^2.6.8",
+    "ip": "^1.1.5",
+    "superagent": "^3.5.2",
+    "superagent-cache": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.41",
+    "@types/ip": "0.0.29",
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.18",
+    "@types/superagent": "^2.0.37",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "coveralls": "^2.13.1",
+    "jest": "^20.0.3",
+    "rimraf": "^2.6.1",
+    "superagent-mock": "^3.4.0",
+    "ts-jest": "^20.0.4",
+    "typescript": "^2.3.3"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  }
+}

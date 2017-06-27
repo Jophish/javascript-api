@@ -1,0 +1,14 @@
+{
+  "ignore": [
+    "**/*.map.js"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "4.0.0"
+      }
+    }]
+  ],
+  "plugins": ["transform-runtime"],
+  "sourceMaps": true
+}

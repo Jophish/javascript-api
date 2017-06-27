@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "trafficTypeId": "1",
+    "displayName": "Name",
+    "description": "First name",
+    "dataType": "STRING"
+  },
+  {
+    "id": "2",
+    "trafficTypeId": "1",
+    "displayName": "LName",
+    "description": "Last name",
+    "dataType": "STRING"
+  }
+]
