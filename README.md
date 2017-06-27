@@ -17,7 +17,7 @@ Split’s SDKs are in active development and are constantly tested for quality. 
 
 ### About Split:
 
-Split builds on feature flags to create the platform for controlled rollouts, so any team can target customers and release or revert new features without a deployment—or touching code. Get started quickly with SDKs in your language, then create on/off, percentage, and multivariate rollout plans in seconds. Integrations with the services you use to monitor, alert and track issues reduce time-to-resolution when things go wrong, and hotfixes are entirely avoided by killing problem features with a single click.
+Split is the leading platform for intelligent software delivery, helping businesses of all sizes deliver exceptional user experiences, and mitigate risk, by providing an easy, secure way to target features to customers. Companies like WePay, LendingTree and thredUP rely on Split to safely launch and test new features and derive insights on their use. Founded in 2015, Split's team comes from some of the most innovative enterprises in Silicon Valley, including Google, LinkedIn, Salesforce and Splunk. Split is based in Redwood City, California and backed by Accel Partners and Lightspeed Venture Partners. To learn more about Split, contact hello@split.io, or start a 14-day free trial at www.split.io/trial.
 
 **What you can do with Split** 
 
