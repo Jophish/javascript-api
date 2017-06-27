@@ -55,5 +55,3 @@ Visit [split.io/product](https://www.split.io/product) for an overview of Split,
 **System Status:**
 
 We use a status page to monitor the availability of Split’s various services. You can check the current status at [status.split.io](http://status.split.io).
-
-----
