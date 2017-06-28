@@ -17,6 +17,11 @@ test('should throw if we try to instantiate an Attribute without minimum values'
 
   expect(createAttr.bind(null, {
     trafficTypeId: 'ttId'
+  })).toThrow();
+
+  expect(createAttr.bind(null, {
+    trafficTypeId: 'ttId',
+    id: 'id'
   })).not.toThrow();
 });
 

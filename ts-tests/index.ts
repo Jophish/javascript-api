@@ -33,7 +33,7 @@ const IdClient: SplitAPI.IdentityClient = apiClient.identities;
 
 /******* Entity classes *******/
 
-const myAttr: entities.Attribute = new entities.Attribute({ trafficTypeId: 'id' });
+const myAttr: entities.Attribute = new entities.Attribute({ trafficTypeId: 'ttId', id: 'id' });
 const myAttr2: entities.Attribute = new entities.Attribute({
   id: 'id2', 
   organizationId: 'orgId', 

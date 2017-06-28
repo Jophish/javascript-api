@@ -28,7 +28,8 @@ var apiClient = SplitAPI.client('api-key', {
 
 // Classes for the entities are provided under entities object.
 var attr = new SplitAPI.entities.Attribute({
-  trafficTypeId: 'a-traffic-type-id'
+  trafficTypeId: 'a-traffic-type-id',
+  id: 'attr_id'
 });
 
 apiClient.attributes.create(attr).then(function (res) {
@@ -37,7 +38,8 @@ apiClient.attributes.create(attr).then(function (res) {
 
 // Or you can use objects that comply with the expected interfaces
 var attrObject = {
-  trafficTypeId: 'a-traffic-type-id'
+  trafficTypeId: 'a-traffic-type-id',
+  id: 'attr_id'
 };
 
 apiClient.attributes.create(attrObject).then(function (res) {
@@ -66,7 +68,8 @@ const apiClient = client('api-key', {
 
 // Classes for the entities are provided under entities object.
 const attr = new entities.Attribute({
-  trafficTypeId: 'a-traffic-type-id'
+  trafficTypeId: 'a-traffic-type-id',
+  id: 'attr_id'
 });
 
 apiClient.attributes.create(attr).then(res => {
@@ -75,7 +78,8 @@ apiClient.attributes.create(attr).then(res => {
 
 // Or you can use objects that comply with the expected interfaces
 const attrObject: SplitAPI.IAttribute = {
-  trafficTypeId: 'a-traffic-type-id'
+  trafficTypeId: 'a-traffic-type-id',
+  id: 'attr_id'
 };
 
 apiClient.attributes.create(attrObject).then(res => {
@@ -103,7 +107,8 @@ const apiClient: SplitAPI.ApiClient = client('api-key', {
 
 // Classes for the entities are provided under entities object.
 const attr: SplitAPI.IAttribute = new entities.Attribute({
-  trafficTypeId: 'a-traffic-type-id'
+  trafficTypeId: 'a-traffic-type-id',
+  id: 'attr_id'
 });
 
 apiClient.attributes.create(attr).then(res => {
@@ -112,7 +117,8 @@ apiClient.attributes.create(attr).then(res => {
 
 // Or you can use objects that comply with the expected interfaces
 const attrObject: SplitAPI.IAttribute = {
-  trafficTypeId: 'a-traffic-type-id'
+  trafficTypeId: 'a-traffic-type-id',
+  id: 'attr_id'
 };
 
 apiClient.attributes.create(attrObject).then(res => {
