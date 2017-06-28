@@ -89,7 +89,7 @@ Attribute-like objects follow the interface below:
 ```TypeScript
 interface IAttribute {
   trafficTypeId: string;
-  id?: string;
+  id: string;
   organizationId?: string;
   displayName?: string;
   dataType?: string;
@@ -103,7 +103,8 @@ We provide an Attribute class under `SplitAPI.entities.Attribute`. _Remember tha
 * An example of attribute instantiation, which will be reused on the other attribute examples:
 ```JavaScript
 var myAttribute = new SplitAPI.entities.Attribute({
-  trafficTypeId: 'a_traffic_type_id'
+  trafficTypeId: 'a_traffic_type_id',
+  id: 'attr_id'
 });
 ```
 
@@ -217,7 +218,7 @@ A short example of each:
 // An Environment-like object:
 var environment = {
   id: 'env_id',
-  name: 'env_name
+  name: 'env_name'
 };
 
 // A TrafficType-like object:
