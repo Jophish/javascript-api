@@ -1,6 +1,6 @@
 {
   "name": "@splitsoftware/splitio-api",
-  "version": "1.0.1-canary.0",
+  "version": "1.0.1",
   "specVersion": "1.0",
   "description": "Split API SDK. Interacts with Split API for identifying traffic.",
   "main": "lib/ApiClient.js",
