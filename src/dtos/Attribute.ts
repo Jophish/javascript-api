@@ -1,6 +1,6 @@
 export interface IAttribute {
   trafficTypeId: string;
-  id?: string;
+  id: string;
   organizationId?: string;
   displayName?: string;
   dataType?: string;
@@ -38,6 +38,7 @@ export default class Attribute implements IAttribute {
 
   private isAttributeLike(attrData: any): boolean {
     return (typeof attrData === 'object'
-            && typeof attrData.trafficTypeId === 'string');
+            && typeof attrData.trafficTypeId === 'string'
+            && typeof attrData.id === 'string');
   }
 }

@@ -415,7 +415,7 @@ declare namespace SplitAPI {
     /**
      * @property {string} [id] - The ID of this attribute.
      */
-    id?: string;
+    id: string;
     /**
      * @property {string} [organizationId] - The ID of the Organization owner of this attribute.
      */
