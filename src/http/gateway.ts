@@ -13,8 +13,8 @@ import { IApiConfig } from '../config/ApiConfig';
 
 // Wrap SA with cache plugin
 require('superagent-cache')(SA, undefined, {
-  // Cache expires after 30 seconds.
-  expiration: 30
+  // Cache expires after 60 seconds.
+  expiration: 60
 });
 
 // request headers metadata
