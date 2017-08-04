@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.0.2 - 2017-08-04
 ### Changed
-- Changed http cache expiration time to 30 seconds.
+- Changed http cache expiration time to 60 seconds.
 
 ## 1.0.1 - 2017-07-04
 ### Changed
