@@ -12,7 +12,10 @@ import * as debug from 'debug';
 import { IApiConfig } from '../config/ApiConfig';
 
 // Wrap SA with cache plugin
-require('superagent-cache')(SA);
+require('superagent-cache')(SA, undefined, {
+  // Cache expires after 60 seconds.
+  expiration: 60
+});
 
 // request headers metadata
 const machineIp = getIpAddress();
