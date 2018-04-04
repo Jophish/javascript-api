@@ -13,7 +13,7 @@ module.exports = [
     /**
      * regular expression of URL
      */
-    pattern: 'mock.split.io(/.*)',
+    pattern: 'https://mock.split.io(/.*)',
     /**
      * returns the data
      *

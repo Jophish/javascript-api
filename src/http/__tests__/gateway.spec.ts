@@ -4,7 +4,7 @@ let superagentMock;
 let gatewayInst;
 const fakeAdminKey = 'fake-key';
 const fakeSettings = {
-  endpoint: 'mock.split.io'
+  endpoint: 'https://mock.split.io'
 };
 const fakeDto = {
   fake: true
