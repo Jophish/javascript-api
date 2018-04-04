@@ -25,7 +25,21 @@ beforeAll(() => {
   // We mock superagent
   superagentMock = require('superagent-mock')(superagent, superagentMockConfig);
 
-  gatewayInst = new Gateway(fakeAdminKey, fakeSettings);
+  try {
+    gatewayInst = new Gateway(fakeAdminKey, fakeSettings);
+  } catch (error) {
+   // noop 
+  }
+});
+
+test('Gateway class should be able to be instantiated with or without config', () => {
+  const gw1 = new Gateway(fakeAdminKey);
+  const gw2 = new Gateway(fakeAdminKey, {});
+  const gw3 = new Gateway(fakeAdminKey, fakeSettings);
+  
+  expect(gw1).toBeInstanceOf(Gateway);
+  expect(gw2).toBeInstanceOf(Gateway);
+  expect(gw3).toBeInstanceOf(Gateway);
 });
 
 test('Should have the correct API for HTTP methods', () => {
