@@ -15,7 +15,7 @@ class ApiClient {
 
   constructor(private apiKey: string, config?: IApiConfig) {
     this.config = new ApiConfig(config);
-    this.gateway = new Gateway(apiKey, config);
+    this.gateway = new Gateway(apiKey, this.config);
     this.trafficTypes = new TrafficTypeClient(this.gateway);
     this.attributes = new AttributeClient(this.gateway);
     this.environments = new EnvironmentClient(this.gateway);

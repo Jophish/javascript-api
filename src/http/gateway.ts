@@ -35,8 +35,8 @@ export default class Gateway {
   private _agent: Agent;
 
   constructor(key: string, config: IApiConfig = {}) {
-    // @TODO we should expose this as configurations even give the change of
-    // reuse an already created agent
+    // @TODO we should expose this as configurations even give the chance of
+    // reusing an already created agent
     this._agent = new Agent({
       maxSockets: MAX_SOCKETS
     });

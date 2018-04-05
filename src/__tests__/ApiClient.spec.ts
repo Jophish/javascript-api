@@ -1,4 +1,5 @@
 import { client, entities } from '../ApiClient';
+import { defaults as defaultConfiguration } from '../config/ApiConfig';
 import * as DTOS from '../dtos';
 
 import { TrafficTypeClient, EnvironmentClient, AttributeClient, IdentityClient } from '../clients';
@@ -30,6 +31,14 @@ test('API clients should support the definiton of a configuration object', () =>
   const apiClient = client('apiKey', fakeConfig);
 
   expect(apiClient.config).toMatchObject(fakeConfig);
+});
+
+test('API clients should use the default config if no configuration object is defined', () => {
+  const apiClient = client('apiKey');
+  const apiClient2 = client('apiKey', {});
+
+  expect(apiClient.config).toMatchObject(defaultConfiguration);
+  expect(apiClient2.config).toMatchObject(defaultConfiguration);  
 });
 
 test('entities should expose the DTO constructors', () => {
