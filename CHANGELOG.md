@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.3 - 2018-04-06
+### Changed
+- Changed the way the configuration is provided to the Gateway class and improved test coverage.
+
 ## 1.0.2 - 2017-08-09
 ### Changed
 - Changed http cache expiration time to 60 seconds.
@@ -27,3 +31,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 [1.0.0]: https://github.com/splitio/javascript-api/releases/tag/v1.0.0
 [1.0.1]: https://github.com/splitio/javascript-api/releases/tag/v1.0.1
 [1.0.2]: https://github.com/splitio/javascript-api/releases/tag/v1.0.2
+[1.0.3]: https://github.com/splitio/javascript-api/releases/tag/v1.0.3

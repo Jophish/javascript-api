@@ -68,7 +68,7 @@ export default class IdentityClient extends Client {
           this.gateway.post(
             group,
             `/trafficTypes/${ttId}/environments/${envId}/identities`
-          ).then((res: ResultDTO<IIdentity>) => {
+          ).then((res) => {
             const saved = res.objects.map(e => new Identity(e));
             const failed = res.failed.map(e => new FailureDTO<any>(e.object, e.status, e.message));
 
