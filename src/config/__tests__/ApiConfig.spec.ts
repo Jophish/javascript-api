@@ -1,7 +1,7 @@
 import ApiConfig from '../ApiConfig';
 
 const defaultSettings = {
-  endpoint: 'https://api.split.io/v1',
+  endpoint: 'https://api.split.io/internal/api/v1',
   connectionTimeout: 15000,
   debugEnabled: false
 };
