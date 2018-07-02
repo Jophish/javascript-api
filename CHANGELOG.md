@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## 1.0.4 - 2018-07-03
 ### Changed
 - Fixed public api endpoint.
+- Added package-lock.json file.
+- Updating some dependencies.
 
 ## 1.0.3 - 2018-04-06
 ### Changed
