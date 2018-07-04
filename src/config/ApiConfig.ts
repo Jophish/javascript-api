@@ -12,7 +12,7 @@ export interface IApiConfig {
 }
 // Exported for testing
 export const defaults: IApiConfig = {
-  endpoint: 'https://api.split.io/v1',
+  endpoint: 'https://api.split.io/internal/api/v1',
   connectionTimeout: 15000,
   debugEnabled: false
 };
